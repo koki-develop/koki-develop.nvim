@@ -209,6 +209,67 @@ require("lazy").setup({
   },
 
   -- ==========================================================================
+  -- File Explorer
+  -- ==========================================================================
+  -- nvim-tree.lua: A file explorer tree for neovim.
+  -- Toggle with <leader>e, navigate with standard vim motions.
+  -- Basic operations in the tree:
+  --   a: Create new file/folder    d: Delete    r: Rename
+  --   x: Cut    c: Copy    p: Paste    ?: Show help
+  {
+    "nvim-tree/nvim-tree.lua",
+    -- renovate: datasource=github-tags depName=nvim-tree/nvim-tree.lua
+    commit = "a0db8bf7d6488b1dcd9cb5b0dfd6684a1e14f769", -- v1.15.0
+    dependencies = {
+      { "nvim-tree/nvim-web-devicons" },
+    },
+    keys = {
+      { "<leader>e", "<cmd>NvimTreeToggle<CR>", desc = "Toggle file explorer" },
+    },
+    -- -------------------------------------------------------------------------
+    -- Disable Netrw (init runs BEFORE plugin loads)
+    -- -------------------------------------------------------------------------
+    -- Netrw is Neovim's built-in file explorer. We disable it to prevent
+    -- conflicts with nvim-tree. This must be done before nvim-tree loads,
+    -- so we use `init` instead of `config`. The `init` function is called
+    -- during startup, even before the plugin is loaded via lazy-loading.
+    init = function()
+      vim.g.loaded_netrw = 1
+      vim.g.loaded_netrwPlugin = 1
+    end,
+    -- -------------------------------------------------------------------------
+    -- nvim-tree Setup (config runs AFTER plugin loads)
+    -- -------------------------------------------------------------------------
+    config = function()
+      require("nvim-tree").setup({
+        -- ---------------------------------------------------------------------
+        -- View Settings
+        -- ---------------------------------------------------------------------
+        -- Configure how the file tree window is displayed.
+        -- - width: Width of the tree window in columns (default: 30)
+        view = {
+          width = 30,
+        },
+
+        -- ---------------------------------------------------------------------
+        -- Filter Settings
+        -- ---------------------------------------------------------------------
+        -- Configure which files are hidden in the tree.
+        -- - dotfiles: When true, files starting with '.' are hidden
+        -- Note: Press 'H' in the tree to toggle dotfiles visibility on the fly.
+        filters = {
+          dotfiles = false, -- Show dotfiles (hidden files)
+        },
+
+        -- Other options use sensible defaults:
+        -- - renderer.icons.show: file/folder/git icons enabled by default
+        -- - sort.sorter: "name" (alphabetical) by default
+        -- - git integration: enabled by default
+      })
+    end,
+  },
+
+  -- ==========================================================================
   -- AI Completion
   -- ==========================================================================
   -- GitHub Copilot: AI-powered code completion and suggestions.
@@ -330,10 +391,10 @@ require("lazy").setup({
           -- Diagnostics
           -- [d: Jump to the previous diagnostic (error, warning, hint)
           -- ]d: Jump to the next diagnostic
-          -- <leader>e: Show diagnostic details in a floating window
+          -- <leader>d: Show diagnostic details in a floating window
           vim.keymap.set("n", "[d", function() vim.diagnostic.jump({ count = -1 }) end, opts)
           vim.keymap.set("n", "]d", function() vim.diagnostic.jump({ count = 1 }) end, opts)
-          vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, opts)
+          vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts)
         end,
       })
     end,
