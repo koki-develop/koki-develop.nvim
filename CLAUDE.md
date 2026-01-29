@@ -54,7 +54,7 @@ This configuration targets **Neovim 0.11+** and uses modern APIs:
   ```
 - For plugins without regular releases (e.g., fzf-lua), use commit-based tracking:
   ```lua
-  -- renovate: datasource=github-commits depName=org/repo
+  -- renovate: datasource=git-refs depName=org/repo
   commit = "..."
   ```
 - Renovate configuration is in `renovate.json`

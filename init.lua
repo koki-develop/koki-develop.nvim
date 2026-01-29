@@ -308,7 +308,7 @@ require("lazy").setup({
     commit = "0aa180e6eb3415f90a4f1b86801db9cab0c0ca7b", -- v1.8.0
     event = { "InsertEnter", "CmdlineEnter" },
     dependencies = {
-      -- renovate: datasource=github-commits depName=rafamadriz/friendly-snippets
+      -- renovate: datasource=git-refs depName=rafamadriz/friendly-snippets
       { "rafamadriz/friendly-snippets", commit = "6cd7280adead7f586db6fccbd15d2cac7e2188b9" },
     },
     opts = {
@@ -388,7 +388,7 @@ require("lazy").setup({
   -- ==========================================================================
   {
     "ibhagwan/fzf-lua",
-    -- renovate: datasource=github-commits depName=ibhagwan/fzf-lua
+    -- renovate: datasource=git-refs depName=ibhagwan/fzf-lua
     commit = "94e2ae01cbc76ba4aa61e2c7b38fe7f25159fc29",
     dependencies = {
       { "nvim-tree/nvim-web-devicons" },
@@ -440,7 +440,7 @@ require("lazy").setup({
   -- Shows: mode, git branch, diff stats, diagnostics, filename, filetype, location
   {
     "nvim-mini/mini.statusline",
-    -- renovate: datasource=github-commits depName=nvim-mini/mini.statusline
+    -- renovate: datasource=git-refs depName=nvim-mini/mini.statusline
     commit = "3e96596ebe51b899874d8174409cdc4f3c749d9a",
     lazy = false,
     config = function()
