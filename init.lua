@@ -525,17 +525,20 @@ require("lazy").setup({
         callback = function(args)
           local opts = { buffer = args.buf, silent = true }
 
-          -- Navigation
+          -- Navigation (using fzf-lua for multi-result handling)
           -- gd: Jump to where the symbol under cursor is defined (implementation)
           -- gD: Jump to where the symbol is declared (e.g., header file in C/C++)
           --     Note: In many languages, declaration and definition are the same
           -- gi: Jump to the implementation of an interface or abstract method
           -- gr: Show all references to the symbol under cursor
           -- K:  Show hover documentation for the symbol under cursor
-          vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-          vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-          vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-          vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+          -- fzf-lua defaults to jump1=true (single result jumps directly)
+          -- gr uses jump1=false to always show the picker for references
+          local fzf = require("fzf-lua")
+          vim.keymap.set("n", "gd", function() fzf.lsp_definitions() end, opts)
+          vim.keymap.set("n", "gD", function() fzf.lsp_declarations() end, opts)
+          vim.keymap.set("n", "gi", function() fzf.lsp_implementations() end, opts)
+          vim.keymap.set("n", "gr", function() fzf.lsp_references({ jump1 = false }) end, opts)
           vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 
           -- Refactoring
