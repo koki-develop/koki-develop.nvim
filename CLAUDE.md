@@ -46,6 +46,10 @@ This configuration targets **Neovim 0.11+** and uses modern APIs:
 - Renovate configuration is in `renovate.json`
 - `lazy-lock.json` is gitignored; `init.lua` is the source of truth
 - Plugins are automatically synced on startup via VimEnter autocmd
+- To check the latest version and commit hash of a plugin:
+  ```bash
+  gh api /repos/{owner}/{repo}/releases/latest --jq '{tag_name: .tag_name, target_commitish: .target_commitish}'
+  ```
 
 ## Testing Changes
 
