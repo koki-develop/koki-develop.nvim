@@ -168,7 +168,7 @@ keymap("n", "<leader>q", ":q<CR>", { desc = "Quit file", silent = true })
 -- which significantly improves startup time.
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
+if not vim.uv.fs_stat(lazypath) then
   vim.fn.system({
     "git",
     "clone",
@@ -187,5 +187,119 @@ vim.opt.rtp:prepend(lazypath)
 -- Plugins will be added here as we build out the configuration.
 
 require("lazy").setup({
-  -- Plugins will be added here
+  -- ==========================================================================
+  -- LSP Support
+  -- ==========================================================================
+  -- This configuration sets up Language Server Protocol (LSP) support using
+  -- three complementary plugins:
+  --
+  -- - mason.nvim: A portable package manager for Neovim that manages external
+  --   editor tooling such as LSP servers, DAP servers, linters, and formatters.
+  --   It provides a nice UI accessible via :Mason command.
+  --
+  -- - mason-lspconfig.nvim: Bridges mason.nvim with nvim-lspconfig, enabling
+  --   automatic installation and setup of LSP servers. It ensures that servers
+  --   specified in `ensure_installed` are automatically downloaded and configured.
+  --
+  -- - nvim-lspconfig: Provides default configurations for various LSP servers,
+  --   making it easy to set up language servers with sensible defaults.
+  {
+    "neovim/nvim-lspconfig",
+    event = { "BufReadPre", "BufNewFile" },
+    dependencies = {
+      "mason-org/mason.nvim",
+      "mason-org/mason-lspconfig.nvim",
+    },
+    config = function()
+      -- -----------------------------------------------------------------------
+      -- Mason Setup
+      -- -----------------------------------------------------------------------
+      -- Initialize mason.nvim with default settings.
+      -- This must be called before mason-lspconfig setup.
+      require("mason").setup()
+
+      -- -----------------------------------------------------------------------
+      -- Mason-LSPConfig Setup
+      -- -----------------------------------------------------------------------
+      -- Configure automatic installation and enabling of LSP servers.
+      --
+      -- - ensure_installed: List of LSP servers that will be automatically
+      --   installed when Neovim starts if they are not already present.
+      --
+      -- - automatic_enable: When set to true (Neovim 0.11+), installed servers
+      --   are automatically enabled via vim.lsp.enable(). This means you don't
+      --   need to manually call setup() for each server.
+      require("mason-lspconfig").setup({
+        ensure_installed = {
+          "lua_ls", -- Lua language server (for Neovim config and Lua projects)
+          "gopls",  -- Go language server (official Google implementation)
+          "ts_ls",  -- TypeScript/JavaScript language server
+        },
+        automatic_enable = true,
+      })
+
+      -- -----------------------------------------------------------------------
+      -- Lua Language Server Configuration
+      -- -----------------------------------------------------------------------
+      -- Configure lua_ls to recognize Neovim's Lua API (vim.* functions).
+      -- This enables completions and hover documentation for Neovim development.
+      vim.lsp.config("lua_ls", {
+        settings = {
+          Lua = {
+            runtime = { version = "LuaJIT" },
+            workspace = {
+              checkThirdParty = false,
+              library = {
+                vim.env.VIMRUNTIME,
+                "${3rd}/luv/library",
+              },
+            },
+          },
+        },
+      })
+
+      -- -----------------------------------------------------------------------
+      -- LSP Keybindings
+      -- -----------------------------------------------------------------------
+      -- Set up buffer-local keybindings when an LSP server attaches to a buffer.
+      -- These keybindings are only active in buffers where LSP is available,
+      -- ensuring they don't interfere with normal editing in non-LSP buffers.
+      vim.api.nvim_create_autocmd("LspAttach", {
+        callback = function(args)
+          local opts = { buffer = args.buf, silent = true }
+
+          -- Navigation
+          -- gd: Jump to where the symbol under cursor is defined (implementation)
+          -- gD: Jump to where the symbol is declared (e.g., header file in C/C++)
+          --     Note: In many languages, declaration and definition are the same
+          -- gi: Jump to the implementation of an interface or abstract method
+          -- gr: Show all references to the symbol under cursor
+          -- K:  Show hover documentation for the symbol under cursor
+          vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+          vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+          vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+          vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+          vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+
+          -- Refactoring
+          -- <leader>rn: Rename the symbol under cursor across all references
+          -- <leader>ca: Show available code actions (quick fixes, refactorings)
+          -- <leader>f:  Format the current buffer using the LSP formatter
+          vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
+          vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+          vim.keymap.set("n", "<leader>f", function()
+            vim.lsp.buf.format({ async = true })
+          end, opts)
+
+          -- Diagnostics
+          -- [d: Jump to the previous diagnostic (error, warning, hint)
+          -- ]d: Jump to the next diagnostic
+          -- <leader>e: Show diagnostic details in a floating window
+          vim.keymap.set("n", "[d", function() vim.diagnostic.jump({ count = -1 }) end, opts)
+          vim.keymap.set("n", "]d", function() vim.diagnostic.jump({ count = 1 }) end, opts)
+          vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, opts)
+        end,
+      })
+    end,
+  },
 })
