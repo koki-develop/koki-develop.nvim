@@ -20,7 +20,9 @@ Plugins will be automatically installed on first launch.
 | [bufferline.nvim](https://github.com/akinsho/bufferline.nvim) | Display buffers as tabs |
 | [nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons) | File type icons |
 | [nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua) | File explorer |
-| [copilot.vim](https://github.com/github/copilot.vim) | GitHub Copilot AI completion |
+| [blink.cmp](https://github.com/saghen/blink.cmp) | Completion engine (LSP, snippets, buffer) |
+| [friendly-snippets](https://github.com/rafamadriz/friendly-snippets) | Snippet collection |
+| [copilot.vim](https://github.com/github/copilot.vim) | GitHub Copilot AI completion (ghost text) |
 | [toggleterm.nvim](https://github.com/akinsho/toggleterm.nvim) | Terminal management |
 | [fzf-lua](https://github.com/ibhagwan/fzf-lua) | Fuzzy finder |
 | [mini.diff](https://github.com/echasnovski/mini.diff) | Git diff visualization |
@@ -104,6 +106,15 @@ Operations inside the tree:
 | `]h` | Normal | Jump to next hunk |
 | `[H` | Normal | Jump to first hunk |
 | `]H` | Normal | Jump to last hunk |
+
+### Completion (blink.cmp)
+
+| Key | Mode | Description |
+|-----|------|-------------|
+| `<C-y>` | Insert | Accept completion |
+| `<C-n>` | Insert | Next completion item |
+| `<C-p>` | Insert | Previous completion item |
+| `<C-e>` | Insert | Close completion menu |
 
 ### LSP
 

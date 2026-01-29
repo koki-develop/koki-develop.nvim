@@ -296,6 +296,38 @@ require("lazy").setup({
   },
 
   -- ==========================================================================
+  -- Completion Engine
+  -- ==========================================================================
+  -- blink.cmp: Performant completion plugin with LSP, snippets, and buffer support.
+  -- Uses Rust fuzzy matcher for typo resistance and performance.
+  -- Keymaps: C-y (accept), C-n/C-p (navigate), C-e (close)
+  {
+    "saghen/blink.cmp",
+    -- renovate: datasource=github-tags depName=saghen/blink.cmp
+    commit = "0aa180e6eb3415f90a4f1b86801db9cab0c0ca7b", -- v1.8.0
+    event = { "InsertEnter", "CmdlineEnter" },
+    dependencies = {
+      -- renovate: datasource=github-commits depName=rafamadriz/friendly-snippets
+      { "rafamadriz/friendly-snippets", commit = "6cd7280adead7f586db6fccbd15d2cac7e2188b9" },
+    },
+    opts = {
+      keymap = {
+        preset = "default",
+        ["<C-space>"] = {}, -- Disable (conflicts with macOS IME toggle)
+      },
+      appearance = {
+        nerd_font_variant = "mono",
+      },
+      completion = {
+        documentation = { auto_show = true, auto_show_delay_ms = 200 },
+      },
+      sources = {
+        default = { "lsp", "path", "snippets", "buffer" },
+      },
+    },
+  },
+
+  -- ==========================================================================
   -- AI Completion
   -- ==========================================================================
   -- GitHub Copilot: AI-powered code completion and suggestions.
@@ -423,8 +455,18 @@ require("lazy").setup({
       { "mason-org/mason.nvim", commit = "44d1e90e1f66e077268191e3ee9d2ac97cc18e65" }, -- v2.2.1
       -- renovate: datasource=github-tags depName=mason-org/mason-lspconfig.nvim
       { "mason-org/mason-lspconfig.nvim", commit = "f2fa60409630ec2d24acf84494fb55e1d28d593c" }, -- v2.1.0
+      { "saghen/blink.cmp" },
     },
     config = function()
+      -- -----------------------------------------------------------------------
+      -- LSP Capabilities (blink.cmp)
+      -- -----------------------------------------------------------------------
+      -- Apply blink.cmp capabilities to all LSP servers.
+      -- This enables enhanced completion features like snippets.
+      vim.lsp.config("*", {
+        capabilities = require("blink.cmp").get_lsp_capabilities(),
+      })
+
       -- -----------------------------------------------------------------------
       -- Mason Setup
       -- -----------------------------------------------------------------------

@@ -17,7 +17,8 @@ The `init.lua` file is organized into these sections (in order):
    - **Colorscheme** - tokyonight.nvim (style: night)
    - **UI Enhancements** - bufferline.nvim for buffer tabs (with nvim-web-devicons)
    - **File Explorer** - nvim-tree.lua for file tree sidebar
-   - **AI Completion** - copilot.vim for GitHub Copilot integration
+   - **Completion Engine** - blink.cmp for LSP/snippet/buffer completion (`C-y` accept, `C-n`/`C-p` navigate)
+   - **AI Completion** - copilot.vim for GitHub Copilot integration (ghost text)
    - **Terminal** - toggleterm.nvim (`<leader>th` horizontal, `<leader>tv` vertical, `<leader>tf` float)
    - **Fuzzy Finder** - fzf-lua (`<C-p>` files, `<C-g>` grep, `<leader><leader>` quick files)
    - **Git Diff** - mini.diff for inline diff visualization (read-only, `[h`/`]h` navigate)
