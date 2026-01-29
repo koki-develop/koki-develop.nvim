@@ -68,11 +68,6 @@ opt.cursorline = true
 opt.scrolloff = 8
 opt.sidescrolloff = 8
 
--- - diagnostic virtual_text: Show diagnostic messages inline at the end of lines
-vim.diagnostic.config({
-	virtual_text = true,
-})
-
 -- -----------------------------------------------------------------------------
 -- Window Splitting
 -- -----------------------------------------------------------------------------
@@ -710,6 +705,15 @@ require("lazy").setup({
 						schemas = require("schemastore").yaml.schemas(),
 					},
 				},
+			})
+
+			-- -----------------------------------------------------------------------
+			-- Diagnostic Configuration
+			-- -----------------------------------------------------------------------
+			-- Configure diagnostic display. Placed here to defer loading of
+			-- vim.diagnostic module until LSP is actually used.
+			vim.diagnostic.config({
+				virtual_text = true,
 			})
 
 			-- -----------------------------------------------------------------------
