@@ -549,14 +549,15 @@ require("lazy").setup({
       --   need to manually call setup() for each server.
       require("mason-lspconfig").setup({
         ensure_installed = {
-          "lua_ls",      -- Lua language server (for Neovim config and Lua projects)
-          "gopls",       -- Go language server (official Google implementation)
-          "ts_ls",       -- TypeScript/JavaScript language server
-          "eslint",      -- ESLint language server (JavaScript/TypeScript linting)
-          "yamlls",      -- YAML language server (schema validation, completion)
-          "jsonls",      -- JSON language server (schema validation, completion)
-          "bashls",      -- Bash language server (shellcheck integration)
-          "tailwindcss", -- Tailwind CSS language server (class name completion)
+          "lua_ls",        -- Lua language server (for Neovim config and Lua projects)
+          "gopls",         -- Go language server (official Google implementation)
+          "ts_ls",         -- TypeScript/JavaScript language server
+          "eslint",        -- ESLint language server (JavaScript/TypeScript linting)
+          "yamlls",        -- YAML language server (schema validation, completion)
+          "jsonls",        -- JSON language server (schema validation, completion)
+          "bashls",        -- Bash language server (shellcheck integration)
+          "tailwindcss",   -- Tailwind CSS language server (class name completion)
+          "gh_actions_ls", -- GitHub Actions language server (expression completion)
         },
         automatic_enable = true,
       })
