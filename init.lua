@@ -185,7 +185,7 @@ require("lazy").setup({
     "akinsho/bufferline.nvim",
     -- renovate: datasource=github-tags depName=akinsho/bufferline.nvim
     commit = "655133c3b4c3e5e05ec549b9f8cc2894ac6f51b3", -- v4.9.1
-    event = "VeryLazy",
+    lazy = false,
     dependencies = {
       -- renovate: datasource=github-tags depName=nvim-tree/nvim-web-devicons
       { "nvim-tree/nvim-web-devicons", commit = "5b9067899ee6a2538891573500e8fd6ff008440f" }, -- v0.100
