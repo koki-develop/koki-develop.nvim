@@ -205,10 +205,11 @@ require("lazy").setup({
   --   making it easy to set up language servers with sensible defaults.
   {
     "neovim/nvim-lspconfig",
+    commit = "5bfcc89fd155b4ffc02d18ab3b7d19c2d4e246a7", -- v2.5.0
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
-      "mason-org/mason.nvim",
-      "mason-org/mason-lspconfig.nvim",
+      { "mason-org/mason.nvim", commit = "44d1e90e1f66e077268191e3ee9d2ac97cc18e65" }, -- v2.2.1
+      { "mason-org/mason-lspconfig.nvim", commit = "f2fa60409630ec2d24acf84494fb55e1d28d593c" }, -- v2.1.0
     },
     config = function()
       -- -----------------------------------------------------------------------
