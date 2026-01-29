@@ -325,6 +325,7 @@ require("lazy").setup({
       sources = {
         default = { "lsp", "path", "snippets", "buffer" },
       },
+      signature = { enabled = true },
     },
   },
 
