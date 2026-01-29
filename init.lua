@@ -352,8 +352,8 @@ require("lazy").setup({
   -- ==========================================================================
   {
     "ibhagwan/fzf-lua",
-    -- renovate: datasource=github-tags depName=ibhagwan/fzf-lua
-    commit = "47b85a25c0c0b2c20b4e75199ed01bb71e7814f5", -- v0.7
+    -- renovate: datasource=github-commits depName=ibhagwan/fzf-lua
+    commit = "94e2ae01cbc76ba4aa61e2c7b38fe7f25159fc29",
     dependencies = {
       { "nvim-tree/nvim-web-devicons" },
     },
