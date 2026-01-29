@@ -195,7 +195,7 @@ require("lazy").setup({
     commit = "545d72cde6400835d895160ecb5853874fd5156d", -- v4.14.1
     config = function()
       require("tokyonight").setup({
-        style = "moon", -- "night", "storm", "day", or "moon"
+        style = "night", -- "night", "storm", "day", or "moon"
         terminal_colors = true,
       })
       vim.cmd.colorscheme("tokyonight")
