@@ -367,6 +367,37 @@ require("lazy").setup({
   },
 
   -- ==========================================================================
+  -- Git Diff Visualization
+  -- ==========================================================================
+  -- mini.diff: Visualize diff hunks (read-only mode)
+  -- Shows git changes in the sign column (add: +, change: ~, delete: -)
+  -- Mappings: [h/]h (navigate hunks), [H/]H (first/last hunk)
+  {
+    "echasnovski/mini.diff",
+    -- renovate: datasource=github-tags depName=echasnovski/mini.diff
+    commit = "fbb93ea1728e7c9d0944df8bd022a68402bd2e7e", -- v0.17.0
+    event = { "BufReadPre", "BufNewFile" },
+    config = function()
+      require("mini.diff").setup({
+        view = {
+          style = "sign",
+          signs = { add = "+", change = "~", delete = "-" },
+        },
+        mappings = {
+          apply = "",
+          reset = "",
+          textobject = "",
+          -- Navigation only
+          goto_first = "[H",
+          goto_prev = "[h",
+          goto_next = "]h",
+          goto_last = "]H",
+        },
+      })
+    end,
+  },
+
+  -- ==========================================================================
   -- LSP Support
   -- ==========================================================================
   -- This configuration sets up Language Server Protocol (LSP) support using
