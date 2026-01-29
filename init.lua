@@ -125,16 +125,6 @@ keymap("n", "<C-k>", "<C-w>k", { desc = "Move to upper window" })
 keymap("n", "<C-l>", "<C-w>l", { desc = "Move to right window" })
 
 -- -----------------------------------------------------------------------------
--- Buffer Navigation
--- -----------------------------------------------------------------------------
--- Use Shift + h/l to cycle through buffers.
--- This provides quick access to recently edited files without
--- needing a buffer picker.
-
-keymap("n", "<S-h>", ":bprevious<CR>", { desc = "Previous buffer", silent = true })
-keymap("n", "<S-l>", ":bnext<CR>", { desc = "Next buffer", silent = true })
-
--- -----------------------------------------------------------------------------
 -- Search
 -- -----------------------------------------------------------------------------
 -- Clear search highlighting with <leader>h.
@@ -186,6 +176,38 @@ vim.opt.rtp:prepend(lazypath)
 -- Plugins will be added here as we build out the configuration.
 
 require("lazy").setup({
+  -- ==========================================================================
+  -- UI Enhancements
+  -- ==========================================================================
+  -- Bufferline: Display open buffers as tabs at the top of the editor.
+  -- This provides a familiar tab-like interface for navigating between buffers.
+  {
+    "akinsho/bufferline.nvim",
+    -- renovate: datasource=github-tags depName=akinsho/bufferline.nvim
+    commit = "655133c3b4c3e5e05ec549b9f8cc2894ac6f51b3", -- v4.9.1
+    event = "VeryLazy",
+    dependencies = {
+      -- renovate: datasource=github-tags depName=nvim-tree/nvim-web-devicons
+      { "nvim-tree/nvim-web-devicons", commit = "5b9067899ee6a2538891573500e8fd6ff008440f" }, -- v0.100
+    },
+    keys = {
+      { "<S-h>", "<cmd>BufferLineCyclePrev<CR>", desc = "Previous buffer" },
+      { "<S-l>", "<cmd>BufferLineCycleNext<CR>", desc = "Next buffer" },
+      { "<leader>x", "<cmd>bdelete<CR>", desc = "Close buffer" },
+    },
+    config = function()
+      require("bufferline").setup({
+        options = {
+          separator_style = "thin", -- Thin separator for a cleaner look
+          show_buffer_close_icons = false, -- Hide close icons on tabs
+          show_close_icon = false, -- Hide close icon for entire bufferline
+          show_buffer_icons = true, -- Show filetype icons
+          diagnostics = "nvim_lsp", -- Show LSP diagnostics indicator
+        },
+      })
+    end,
+  },
+
   -- ==========================================================================
   -- LSP Support
   -- ==========================================================================
