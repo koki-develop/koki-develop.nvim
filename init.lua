@@ -68,6 +68,11 @@ opt.cursorline = true
 opt.scrolloff = 8
 opt.sidescrolloff = 8
 
+-- - diagnostic virtual_text: Show diagnostic messages inline at the end of lines
+vim.diagnostic.config({
+  virtual_text = true,
+})
+
 -- -----------------------------------------------------------------------------
 -- Window Splitting
 -- -----------------------------------------------------------------------------
