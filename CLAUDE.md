@@ -14,6 +14,7 @@ The `init.lua` file is organized into these sections (in order):
 3. **Key Mappings** - Custom keybindings for window/buffer navigation, search, line movement, and file operations
 4. **Plugin Manager Bootstrap** - lazy.nvim installation (always uses latest)
 5. **Plugin Setup** - `require("lazy").setup({...})` block for plugin specifications
+   - **Colorscheme** - tokyonight.nvim (style: moon)
    - **UI Enhancements** - bufferline.nvim for buffer tabs (with nvim-web-devicons)
    - **File Explorer** - nvim-tree.lua for file tree sidebar
    - **AI Completion** - copilot.vim for GitHub Copilot integration

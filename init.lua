@@ -184,6 +184,25 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   -- ==========================================================================
+  -- Colorscheme
+  -- ==========================================================================
+  -- tokyonight.nvim: A clean, dark Neovim theme with vibrant colors.
+  -- Popular choice for LunarVim and similar configurations.
+  -- Styles available: night, storm, day, moon (default)
+  {
+    "folke/tokyonight.nvim",
+    -- renovate: datasource=github-tags depName=folke/tokyonight.nvim
+    commit = "545d72cde6400835d895160ecb5853874fd5156d", -- v4.14.1
+    config = function()
+      require("tokyonight").setup({
+        style = "moon", -- "night", "storm", "day", or "moon"
+        terminal_colors = true,
+      })
+      vim.cmd.colorscheme("tokyonight")
+    end,
+  },
+
+  -- ==========================================================================
   -- UI Enhancements
   -- ==========================================================================
   -- Bufferline: Display open buffers as tabs at the top of the editor.
