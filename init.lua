@@ -431,6 +431,23 @@ require("lazy").setup({
   },
 
   -- ==========================================================================
+  -- Statusline
+  -- ==========================================================================
+  -- mini.statusline: Minimal and fast statusline
+  -- Shows: mode, git branch, diff stats, diagnostics, filename, filetype, location
+  {
+    "echasnovski/mini.statusline",
+    -- renovate: datasource=github-commits depName=echasnovski/mini.statusline
+    commit = "3e96596ebe51b899874d8174409cdc4f3c749d9a",
+    lazy = false,
+    config = function()
+      require("mini.statusline").setup({
+        use_icons = true,
+      })
+    end,
+  },
+
+  -- ==========================================================================
   -- LSP Support
   -- ==========================================================================
   -- This configuration sets up Language Server Protocol (LSP) support using
