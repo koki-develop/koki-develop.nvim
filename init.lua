@@ -281,6 +281,47 @@ require("lazy").setup({
   },
 
   -- ==========================================================================
+  -- Terminal
+  -- ==========================================================================
+  -- toggleterm.nvim: Toggle terminal with different directions
+  -- <leader>th: horizontal, <leader>tv: vertical, <leader>tf: float
+  {
+    "akinsho/toggleterm.nvim",
+    -- renovate: datasource=github-tags depName=akinsho/toggleterm.nvim
+    commit = "50ea089fc548917cc3cc16b46a8211833b9e3c7c", -- v2.13.1
+    keys = {
+      { "<C-\\>", desc = "Toggle terminal" },
+      { "<leader>th", "<cmd>ToggleTerm direction=horizontal<CR>", desc = "Terminal (horizontal)" },
+      { "<leader>tv", "<cmd>ToggleTerm direction=vertical<CR>", desc = "Terminal (vertical)" },
+      { "<leader>tf", "<cmd>ToggleTerm direction=float<CR>", desc = "Terminal (float)" },
+    },
+    config = function()
+      require("toggleterm").setup({
+        open_mapping = [[<C-\>]],
+        direction = "vertical",
+        size = function(term)
+          if term.direction == "horizontal" then
+            return vim.o.lines * 0.3
+          elseif term.direction == "vertical" then
+            return vim.o.columns * 0.4
+          end
+        end,
+        float_opts = {
+          border = "curved",
+        },
+      })
+
+      -- Terminal mode: <Esc> to return to normal mode
+      vim.api.nvim_create_autocmd("TermOpen", {
+        pattern = "term://*",
+        callback = function()
+          vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { buffer = 0 })
+        end,
+      })
+    end,
+  },
+
+  -- ==========================================================================
   -- LSP Support
   -- ==========================================================================
   -- This configuration sets up Language Server Protocol (LSP) support using

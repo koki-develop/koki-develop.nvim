@@ -15,7 +15,9 @@ The `init.lua` file is organized into these sections (in order):
 4. **Plugin Manager Bootstrap** - lazy.nvim installation (always uses latest)
 5. **Plugin Setup** - `require("lazy").setup({...})` block for plugin specifications
    - **UI Enhancements** - bufferline.nvim for buffer tabs (with nvim-web-devicons)
+   - **File Explorer** - nvim-tree.lua for file tree sidebar
    - **AI Completion** - copilot.vim for GitHub Copilot integration
+   - **Terminal** - toggleterm.nvim (`<leader>th` horizontal, `<leader>tv` vertical, `<leader>tf` float)
    - **LSP Support** - mason.nvim + mason-lspconfig.nvim + nvim-lspconfig with automatic_enable
 6. **Auto Sync Plugins** - VimEnter autocmd that runs `Lazy sync` silently
 
