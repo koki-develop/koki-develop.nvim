@@ -30,6 +30,18 @@ This configuration targets **Neovim 0.11+** and uses modern APIs:
 - `vim.uv` instead of `vim.loop` (deprecated)
 - `vim.diagnostic.jump({ count = n })` instead of `goto_prev/goto_next` (deprecated)
 - `vim.lsp.config()` and `vim.lsp.enable()` for LSP configuration
+
+## Plugin Version Management
+
+- Plugins are pinned to specific commit SHAs with version tags in comments
+- Format: `commit = "SHA", -- vX.Y.Z`
+- Renovate comment annotations enable automatic updates:
+  ```lua
+  -- renovate: datasource=github-tags depName=org/repo
+  commit = "...", -- vX.Y.Z
+  ```
+- Renovate configuration is in `renovate.json`
+
 ## Testing Changes
 
 To test configuration changes, reload Neovim or run `:source %` on the init.lua file. For lazy.nvim changes, use `:Lazy` to access the plugin manager UI.
