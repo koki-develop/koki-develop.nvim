@@ -147,6 +147,9 @@ The following LSP servers are automatically installed via Mason:
 | `ts_ls` | TypeScript / JavaScript |
 | `eslint` | JavaScript / TypeScript (linting) |
 | `yamlls` | YAML |
+| `jsonls` | JSON |
+| `bashls` | Bash / Shell |
+| `tailwindcss` | Tailwind CSS |
 
 ## License
 
