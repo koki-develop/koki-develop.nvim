@@ -15,6 +15,7 @@ The `init.lua` file is organized into these sections (in order):
 4. **Plugin Manager Bootstrap** - lazy.nvim installation (pinned to v11.17.5)
 5. **Plugin Setup** - `require("lazy").setup({...})` block for plugin specifications
    - **LSP Support** - mason.nvim + mason-lspconfig.nvim + nvim-lspconfig with automatic_enable
+6. **Auto Sync Plugins** - VimEnter autocmd that runs `Lazy sync` silently
 
 ## Key Conventions
 
@@ -41,6 +42,8 @@ This configuration targets **Neovim 0.11+** and uses modern APIs:
   commit = "...", -- vX.Y.Z
   ```
 - Renovate configuration is in `renovate.json`
+- `lazy-lock.json` is gitignored; `init.lua` is the source of truth
+- Plugins are automatically synced on startup via VimEnter autocmd
 
 ## Testing Changes
 
