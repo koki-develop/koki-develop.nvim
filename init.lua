@@ -315,6 +315,8 @@ require("lazy").setup({
       keymap = {
         preset = "default",
         ["<C-space>"] = {}, -- Disable (conflicts with macOS IME toggle)
+        ["<C-n>"] = { "show", "select_next", "fallback" },
+        ["<C-p>"] = { "show", "select_prev", "fallback" },
       },
       appearance = {
         nerd_font_variant = "mono",
