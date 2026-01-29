@@ -20,7 +20,9 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      pull-requests: write # for commenting on PRs and automerging
+      pull-requests: write # for commenting on PRs
+    outputs:
+      safety-assessment: ${{ steps.claude-renovate-review.outputs.safety-assessment }}
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
@@ -36,10 +38,18 @@ jobs:
           allowed-tools: |
             WebSearch
             WebFetch
-      # automerge
-      - name: Automerge Renovate PR
-        if: steps.claude-renovate-review.outputs.safety-assessment == 'safe'
+
+  automerge:
+    name: Automerge
+    needs: claude-renovate-review
+    if: needs.claude-renovate-review.outputs.safety-assessment == 'safe'
+    timeout-minutes: 5
+    runs-on: ubuntu-slim
+    permissions:
+      contents: write # for merging PRs
+      pull-requests: write # for merging PRs
+    steps:
+      - run: gh pr merge --repo "$GITHUB_REPOSITORY" --squash --auto --delete-branch "$PR_NUMBER"
         env:
           GH_TOKEN: ${{ github.token }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
-        run: gh pr merge --repo "$GITHUB_REPOSITORY" --squash --auto --delete-branch "$PR_NUMBER"
