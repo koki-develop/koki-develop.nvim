@@ -14,6 +14,7 @@ The `init.lua` file is organized into these sections (in order):
 3. **Key Mappings** - Custom keybindings for window/buffer navigation, search, line movement, and file operations
 4. **Plugin Manager Bootstrap** - lazy.nvim installation (pinned to v11.17.5)
 5. **Plugin Setup** - `require("lazy").setup({...})` block for plugin specifications
+   - **LSP Support** - mason.nvim + mason-lspconfig.nvim + nvim-lspconfig with automatic_enable
 
 ## Key Conventions
 
@@ -21,7 +22,14 @@ The `init.lua` file is organized into these sections (in order):
 - Leader key is space
 - Plugins are managed via lazy.nvim with lazy-loading support
 - No swap files (uses undo files + version control instead)
+- Prefer minimal configurations over complex setups
 
+## Neovim Version
+
+This configuration targets **Neovim 0.11+** and uses modern APIs:
+- `vim.uv` instead of `vim.loop` (deprecated)
+- `vim.diagnostic.jump({ count = n })` instead of `goto_prev/goto_next` (deprecated)
+- `vim.lsp.config()` and `vim.lsp.enable()` for LSP configuration
 ## Testing Changes
 
 To test configuration changes, reload Neovim or run `:source %` on the init.lua file. For lazy.nvim changes, use `:Lazy` to access the plugin manager UI.
