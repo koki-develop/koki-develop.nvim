@@ -93,9 +93,16 @@ opt.clipboard = "unnamedplus"
 -- - undofile: Persist undo history to disk, allowing undo after closing/reopening
 -- - swapfile: Disable swap files (we rely on undo files and version control instead)
 --   Swap files can be annoying and cause conflicts, especially with version control.
+-- - autoread: Automatically reload files when changed externally
+--   Combined with checktime autocmd to detect changes without relying on focus events
 
 opt.undofile = true
 opt.swapfile = false
+opt.autoread = true
+
+vim.api.nvim_create_autocmd({ "CursorHold", "BufEnter" }, {
+  command = "checktime",
+})
 
 -- -----------------------------------------------------------------------------
 -- Performance Tuning
