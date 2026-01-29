@@ -643,6 +643,7 @@ require("lazy").setup({
           "bashls",        -- Bash language server (shellcheck integration)
           "tailwindcss",   -- Tailwind CSS language server (class name completion)
           "gh_actions_ls", -- GitHub Actions language server (expression completion)
+          "terraformls",   -- Terraform language server (HCL syntax, completion, diagnostics)
         },
         automatic_enable = true,
       })

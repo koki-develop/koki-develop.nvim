@@ -155,6 +155,7 @@ The following LSP servers are automatically installed via Mason:
 | `bashls` | Bash / Shell |
 | `tailwindcss` | Tailwind CSS |
 | `gh_actions_ls` | GitHub Actions |
+| `terraformls` | Terraform |
 
 ## Formatters
 
