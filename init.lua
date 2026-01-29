@@ -106,7 +106,7 @@ opt.swapfile = false
 --   Affects which-key popup delay and multi-key mappings
 
 opt.updatetime = 250
-opt.timeoutlen = 300
+opt.timeoutlen = 1000
 
 -- =============================================================================
 -- Key Mappings
