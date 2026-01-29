@@ -285,6 +285,7 @@ require("lazy").setup({
         -- Note: Press 'H' in the tree to toggle dotfiles visibility on the fly.
         filters = {
           dotfiles = false, -- Show dotfiles (hidden files)
+          git_ignored = false, -- Show gitignored files
         },
 
         -- Other options use sensible defaults:
