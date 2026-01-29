@@ -24,6 +24,7 @@ The `init.lua` file is organized into these sections (in order):
    - **Git Diff** - mini.diff for inline diff visualization (read-only, `[h`/`]h` navigate)
    - **Statusline** - mini.statusline for minimal statusline (mode, git, diagnostics, filename, location)
    - **Auto Pairs** - mini.pairs for automatic bracket/quote pairing
+   - **Trailing Whitespace** - mini.trailspace for highlighting/trimming (`<leader>tw` trim)
    - **LSP Support** - mason.nvim + mason-lspconfig.nvim + nvim-lspconfig with automatic_enable
 6. **Auto Sync Plugins** - VimEnter autocmd that runs `Lazy sync` silently
 
@@ -61,8 +62,12 @@ This configuration targets **Neovim 0.11+** and uses modern APIs:
 - Plugins are automatically synced on startup via VimEnter autocmd
 - To check the latest version and commit hash of a plugin:
   ```bash
+  # For plugins with GitHub releases
   gh api /repos/{owner}/{repo}/releases/latest --jq '{tag_name: .tag_name, target_commitish: .target_commitish}'
+  # For plugins without releases (tags only)
+  gh api /repos/{owner}/{repo}/tags --jq '.[0] | {name: .name, sha: .commit.sha}'
   ```
+- Note: mini.nvim modules are published as separate repos (e.g., `echasnovski/mini.trailspace`), each with their own commit SHAs
 
 ## Testing Changes
 

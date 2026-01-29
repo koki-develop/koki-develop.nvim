@@ -466,6 +466,25 @@ require("lazy").setup({
   },
 
   -- ==========================================================================
+  -- Trailing Whitespace
+  -- ==========================================================================
+  -- mini.trailspace: Highlight and remove trailing whitespace
+  -- Automatically highlights trailing spaces in Normal mode
+  -- <leader>tw: Trim trailing whitespace
+  {
+    "echasnovski/mini.trailspace",
+    -- renovate: datasource=github-tags depName=echasnovski/mini.trailspace
+    commit = "f8083ca969e1b2098480c10f3c3c4d2ce3586680", -- v0.17.0
+    event = { "BufReadPre", "BufNewFile" },
+    keys = {
+      { "<leader>tw", function() MiniTrailspace.trim() end, desc = "Trim trailing whitespace" },
+    },
+    config = function()
+      require("mini.trailspace").setup()
+    end,
+  },
+
+  -- ==========================================================================
   -- LSP Support
   -- ==========================================================================
   -- This configuration sets up Language Server Protocol (LSP) support using

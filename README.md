@@ -28,6 +28,7 @@ Plugins will be automatically installed on first launch.
 | [mini.diff](https://github.com/echasnovski/mini.diff) | Git diff visualization |
 | [mini.statusline](https://github.com/echasnovski/mini.statusline) | Minimal statusline |
 | [mini.pairs](https://github.com/echasnovski/mini.pairs) | Auto pairs (brackets, quotes) |
+| [mini.trailspace](https://github.com/echasnovski/mini.trailspace) | Trailing whitespace highlight/trim |
 | [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) | LSP configuration |
 | [mason.nvim](https://github.com/mason-org/mason.nvim) | LSP server manager |
 | [mason-lspconfig.nvim](https://github.com/mason-org/mason-lspconfig.nvim) | Mason and LSP integration |
@@ -43,6 +44,7 @@ Leader key is `<Space>`.
 | `<leader>w` | Normal | Save file |
 | `<leader>q` | Normal | Quit |
 | `<leader>h` | Normal | Clear search highlight |
+| `<leader>tw` | Normal | Trim trailing whitespace |
 
 ### Window Navigation
 
