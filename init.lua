@@ -311,7 +311,7 @@ require("lazy").setup({
   {
     "saghen/blink.cmp",
     -- renovate: datasource=github-tags depName=saghen/blink.cmp
-    commit = "0aa180e6eb3415f90a4f1b86801db9cab0c0ca7b", -- v1.8.0
+    commit = "b19413d214068f316c78978b08264ed1c41830ec", -- v1.8.0
     event = { "InsertEnter", "CmdlineEnter" },
     dependencies = {
       -- renovate: datasource=git-refs depName=rafamadriz/friendly-snippets
