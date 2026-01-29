@@ -29,9 +29,11 @@ Plugins will be automatically installed on first launch.
 | [mini.statusline](https://github.com/nvim-mini/mini.statusline) | Minimal statusline |
 | [mini.pairs](https://github.com/nvim-mini/mini.pairs) | Auto pairs (brackets, quotes) |
 | [mini.trailspace](https://github.com/nvim-mini/mini.trailspace) | Trailing whitespace highlight/trim |
+| [conform.nvim](https://github.com/stevearc/conform.nvim) | Code formatter (format on save) |
 | [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) | LSP configuration |
 | [mason.nvim](https://github.com/mason-org/mason.nvim) | LSP server manager |
 | [mason-lspconfig.nvim](https://github.com/mason-org/mason-lspconfig.nvim) | Mason and LSP integration |
+| [mason-tool-installer.nvim](https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim) | Auto-install formatters |
 | [SchemaStore.nvim](https://github.com/b0o/SchemaStore.nvim) | JSON/YAML schema catalog |
 
 ## Keymaps
@@ -43,6 +45,7 @@ Leader key is `<Space>`.
 | Key | Mode | Description |
 |-----|------|-------------|
 | `<leader>w` | Normal | Save file |
+| `<leader>W` | Normal | Save file (no format) |
 | `<leader>q` | Normal | Quit |
 | `<leader>h` | Normal | Clear search highlight |
 | `<leader>tw` | Normal | Trim trailing whitespace |
@@ -132,7 +135,7 @@ Operations inside the tree:
 | `K` | Normal | Hover documentation |
 | `<leader>rn` | Normal | Rename symbol |
 | `<leader>ca` | Normal | Code action |
-| `<leader>f` | Normal | Format |
+| `<leader>f` | Normal | Format (conform.nvim) |
 | `[d` | Normal | Jump to previous diagnostic |
 | `]d` | Normal | Jump to next diagnostic |
 | `<leader>d` | Normal | Show diagnostic details |
@@ -152,6 +155,18 @@ The following LSP servers are automatically installed via Mason:
 | `bashls` | Bash / Shell |
 | `tailwindcss` | Tailwind CSS |
 | `gh_actions_ls` | GitHub Actions |
+
+## Formatters
+
+The following formatters are automatically installed via Mason:
+
+| Formatter | Language |
+|-----------|----------|
+| `stylua` | Lua |
+| `goimports` | Go |
+| `prettier` | JavaScript / TypeScript / JSON / YAML |
+| `biome` | JavaScript / TypeScript / JSON (when biome.json exists) |
+| `shfmt` | Shell |
 
 ## License
 

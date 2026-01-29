@@ -160,6 +160,7 @@ keymap("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selection up", silent = true
 -- These are common operations that benefit from shorter keymaps.
 
 keymap("n", "<leader>w", ":w<CR>", { desc = "Save file", silent = true })
+keymap("n", "<leader>W", ":noautocmd w<CR>", { desc = "Save file (no format)", silent = true })
 keymap("n", "<leader>q", ":q<CR>", { desc = "Quit file", silent = true })
 
 -- =============================================================================
@@ -490,6 +491,74 @@ require("lazy").setup({
   },
 
   -- ==========================================================================
+  -- Code Formatter
+  -- ==========================================================================
+  -- conform.nvim: Lightweight yet powerful formatter plugin.
+  -- Supports multiple formatters per filetype with LSP fallback.
+  -- <leader>f: Format buffer, format_on_save: enabled
+  {
+    "stevearc/conform.nvim",
+    -- renovate: datasource=github-tags depName=stevearc/conform.nvim
+    commit = "3543d000dafbc41cc7761d860cfdb24e82154f75", -- v9.1.0
+    event = { "BufWritePre" },
+    cmd = { "ConformInfo" },
+    keys = {
+      {
+        "<leader>f",
+        function()
+          require("conform").format({ async = true, lsp_format = "fallback" })
+        end,
+        desc = "Format buffer",
+      },
+    },
+    opts = {
+      formatters_by_ft = {
+        lua = { "stylua" },
+        go = { "goimports", "gofmt" },
+        javascript = function()
+          if vim.fs.find({ "biome.json", "biome.jsonc" }, { upward = true })[1] then
+            return { "biome" }
+          end
+          return { "prettier" }
+        end,
+        typescript = function()
+          if vim.fs.find({ "biome.json", "biome.jsonc" }, { upward = true })[1] then
+            return { "biome" }
+          end
+          return { "prettier" }
+        end,
+        javascriptreact = function()
+          if vim.fs.find({ "biome.json", "biome.jsonc" }, { upward = true })[1] then
+            return { "biome" }
+          end
+          return { "prettier" }
+        end,
+        typescriptreact = function()
+          if vim.fs.find({ "biome.json", "biome.jsonc" }, { upward = true })[1] then
+            return { "biome" }
+          end
+          return { "prettier" }
+        end,
+        json = function()
+          if vim.fs.find({ "biome.json", "biome.jsonc" }, { upward = true })[1] then
+            return { "biome" }
+          end
+          return { "prettier" }
+        end,
+        yaml = { "prettier" },
+        sh = { "shfmt" },
+      },
+      default_format_opts = {
+        lsp_format = "fallback",
+      },
+      format_on_save = {
+        timeout_ms = 500,
+        lsp_format = "fallback",
+      },
+    },
+  },
+
+  -- ==========================================================================
   -- LSP Support
   -- ==========================================================================
   -- This configuration sets up Language Server Protocol (LSP) support using
@@ -515,6 +584,8 @@ require("lazy").setup({
       { "mason-org/mason.nvim", commit = "44d1e90e1f66e077268191e3ee9d2ac97cc18e65" }, -- v2.2.1
       -- renovate: datasource=github-tags depName=mason-org/mason-lspconfig.nvim
       { "mason-org/mason-lspconfig.nvim", commit = "f2fa60409630ec2d24acf84494fb55e1d28d593c" }, -- v2.1.0
+      -- renovate: datasource=git-refs depName=WhoIsSethDaniel/mason-tool-installer.nvim
+      { "WhoIsSethDaniel/mason-tool-installer.nvim", commit = "443f1ef8b5e6bf47045cb2217b6f748a223cf7dc" },
       -- renovate: datasource=git-refs depName=b0o/SchemaStore.nvim
       { "b0o/SchemaStore.nvim", commit = "9afa445602e6191917b4d32f1355e77b4525f905" },
       { "saghen/blink.cmp" },
@@ -535,6 +606,20 @@ require("lazy").setup({
       -- Initialize mason.nvim with default settings.
       -- This must be called before mason-lspconfig setup.
       require("mason").setup()
+
+      -- -----------------------------------------------------------------------
+      -- Mason Tool Installer Setup
+      -- -----------------------------------------------------------------------
+      -- Automatically install formatters and other tools.
+      require("mason-tool-installer").setup({
+        ensure_installed = {
+          "stylua",    -- Lua formatter
+          "shfmt",     -- Shell formatter
+          "goimports", -- Go imports organizer
+          "prettier",  -- JS/TS/JSON/YAML formatter
+          "biome",     -- JS/TS/JSON formatter (fast)
+        },
+      })
 
       -- -----------------------------------------------------------------------
       -- Mason-LSPConfig Setup
@@ -637,12 +722,9 @@ require("lazy").setup({
           -- Refactoring
           -- <leader>rn: Rename the symbol under cursor across all references
           -- <leader>ca: Show available code actions (quick fixes, refactorings)
-          -- <leader>f:  Format the current buffer using the LSP formatter
+          -- Note: <leader>f (format) is handled by conform.nvim
           vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
           vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
-          vim.keymap.set("n", "<leader>f", function()
-            vim.lsp.buf.format({ async = true })
-          end, opts)
 
           -- Diagnostics
           -- [d: Jump to the previous diagnostic (error, warning, hint)

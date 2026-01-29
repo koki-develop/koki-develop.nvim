@@ -25,7 +25,8 @@ The `init.lua` file is organized into these sections (in order):
    - **Statusline** - mini.statusline for minimal statusline (mode, git, diagnostics, filename, location)
    - **Auto Pairs** - mini.pairs for automatic bracket/quote pairing
    - **Trailing Whitespace** - mini.trailspace for highlighting/trimming (`<leader>tw` trim)
-   - **LSP Support** - mason.nvim + mason-lspconfig.nvim + nvim-lspconfig with automatic_enable
+   - **Code Formatter** - conform.nvim (`<leader>f` format, `<leader>W` save without format, format_on_save enabled)
+   - **LSP Support** - mason.nvim + mason-lspconfig.nvim + mason-tool-installer.nvim + nvim-lspconfig with automatic_enable
 6. **Auto Sync Plugins** - VimEnter autocmd that runs `Lazy sync` silently
 
 ## Key Conventions
