@@ -27,6 +27,7 @@ Plugins will be automatically installed on first launch.
 | [fzf-lua](https://github.com/ibhagwan/fzf-lua) | Fuzzy finder |
 | [mini.diff](https://github.com/echasnovski/mini.diff) | Git diff visualization |
 | [mini.statusline](https://github.com/echasnovski/mini.statusline) | Minimal statusline |
+| [mini.pairs](https://github.com/echasnovski/mini.pairs) | Auto pairs (brackets, quotes) |
 | [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) | LSP configuration |
 | [mason.nvim](https://github.com/mason-org/mason.nvim) | LSP server manager |
 | [mason-lspconfig.nvim](https://github.com/mason-org/mason-lspconfig.nvim) | Mason and LSP integration |

@@ -448,6 +448,21 @@ require("lazy").setup({
   },
 
   -- ==========================================================================
+  -- Auto Pairs
+  -- ==========================================================================
+  -- mini.pairs: Automatic pairing of brackets, quotes, etc.
+  -- Automatically inserts closing pair: () [] {} "" '' ``
+  {
+    "echasnovski/mini.pairs",
+    -- renovate: datasource=github-tags depName=echasnovski/mini.pairs
+    commit = "d5a29b6254dad07757832db505ea5aeab9aad43a", -- v0.17.0
+    event = "InsertEnter",
+    config = function()
+      require("mini.pairs").setup()
+    end,
+  },
+
+  -- ==========================================================================
   -- LSP Support
   -- ==========================================================================
   -- This configuration sets up Language Server Protocol (LSP) support using
