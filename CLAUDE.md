@@ -18,6 +18,7 @@ The `init.lua` file is organized into these sections (in order):
    - **File Explorer** - nvim-tree.lua for file tree sidebar
    - **AI Completion** - copilot.vim for GitHub Copilot integration
    - **Terminal** - toggleterm.nvim (`<leader>th` horizontal, `<leader>tv` vertical, `<leader>tf` float)
+   - **Fuzzy Finder** - fzf-lua (`<C-p>` files, `<C-g>` grep, `<leader><leader>` quick files)
    - **LSP Support** - mason.nvim + mason-lspconfig.nvim + nvim-lspconfig with automatic_enable
 6. **Auto Sync Plugins** - VimEnter autocmd that runs `Lazy sync` silently
 

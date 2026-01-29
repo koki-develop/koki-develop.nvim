@@ -329,6 +329,25 @@ require("lazy").setup({
   },
 
   -- ==========================================================================
+  -- Fuzzy Finder
+  -- ==========================================================================
+  {
+    "ibhagwan/fzf-lua",
+    -- renovate: datasource=github-tags depName=ibhagwan/fzf-lua
+    commit = "47b85a25c0c0b2c20b4e75199ed01bb71e7814f5", -- v0.7
+    dependencies = {
+      { "nvim-tree/nvim-web-devicons" },
+    },
+    keys = {
+      { "<C-p>", function() require("fzf-lua").files() end, desc = "Find files" },
+      { "<C-g>", function() require("fzf-lua").live_grep() end, desc = "Live grep" },
+    },
+    config = function()
+      require("fzf-lua").setup({ "default" })
+    end,
+  },
+
+  -- ==========================================================================
   -- LSP Support
   -- ==========================================================================
   -- This configuration sets up Language Server Protocol (LSP) support using
