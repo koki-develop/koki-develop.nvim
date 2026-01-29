@@ -409,8 +409,8 @@ require("lazy").setup({
   -- Shows git changes in the sign column (add: +, change: ~, delete: -)
   -- Mappings: [h/]h (navigate hunks), [H/]H (first/last hunk)
   {
-    "echasnovski/mini.diff",
-    -- renovate: datasource=github-tags depName=echasnovski/mini.diff
+    "nvim-mini/mini.diff",
+    -- renovate: datasource=github-tags depName=nvim-mini/mini.diff
     commit = "fbb93ea1728e7c9d0944df8bd022a68402bd2e7e", -- v0.17.0
     event = { "BufReadPre", "BufNewFile" },
     config = function()
@@ -439,8 +439,8 @@ require("lazy").setup({
   -- mini.statusline: Minimal and fast statusline
   -- Shows: mode, git branch, diff stats, diagnostics, filename, filetype, location
   {
-    "echasnovski/mini.statusline",
-    -- renovate: datasource=github-commits depName=echasnovski/mini.statusline
+    "nvim-mini/mini.statusline",
+    -- renovate: datasource=github-commits depName=nvim-mini/mini.statusline
     commit = "3e96596ebe51b899874d8174409cdc4f3c749d9a",
     lazy = false,
     config = function()
@@ -456,8 +456,8 @@ require("lazy").setup({
   -- mini.pairs: Automatic pairing of brackets, quotes, etc.
   -- Automatically inserts closing pair: () [] {} "" '' ``
   {
-    "echasnovski/mini.pairs",
-    -- renovate: datasource=github-tags depName=echasnovski/mini.pairs
+    "nvim-mini/mini.pairs",
+    -- renovate: datasource=github-tags depName=nvim-mini/mini.pairs
     commit = "d5a29b6254dad07757832db505ea5aeab9aad43a", -- v0.17.0
     event = "InsertEnter",
     config = function()
@@ -472,12 +472,12 @@ require("lazy").setup({
   -- Automatically highlights trailing spaces in Normal mode
   -- <leader>tw: Trim trailing whitespace
   {
-    "echasnovski/mini.trailspace",
-    -- renovate: datasource=github-tags depName=echasnovski/mini.trailspace
+    "nvim-mini/mini.trailspace",
+    -- renovate: datasource=github-tags depName=nvim-mini/mini.trailspace
     commit = "f8083ca969e1b2098480c10f3c3c4d2ce3586680", -- v0.17.0
     event = { "BufReadPre", "BufNewFile" },
     keys = {
-      { "<leader>tw", function() MiniTrailspace.trim() end, desc = "Trim trailing whitespace" },
+      { "<leader>tw", function() require("mini.trailspace").trim() end, desc = "Trim trailing whitespace" },
     },
     config = function()
       require("mini.trailspace").setup()

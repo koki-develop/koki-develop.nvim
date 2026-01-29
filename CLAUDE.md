@@ -67,7 +67,7 @@ This configuration targets **Neovim 0.11+** and uses modern APIs:
   # For plugins without releases (tags only)
   gh api /repos/{owner}/{repo}/tags --jq '.[0] | {name: .name, sha: .commit.sha}'
   ```
-- Note: mini.nvim modules are published as separate repos (e.g., `echasnovski/mini.trailspace`), each with their own commit SHAs
+- Note: mini.nvim modules are published as separate repos (e.g., `nvim-mini/mini.trailspace`), each with their own commit SHAs
 
 ## Testing Changes
 
