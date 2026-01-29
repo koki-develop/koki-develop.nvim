@@ -12,9 +12,9 @@ The `init.lua` file is organized into these sections (in order):
 1. **Leader Key Configuration** - Sets space as leader/localleader
 2. **General Options** - Core Neovim settings (line numbers, indentation, search, display, splits, clipboard, file handling, performance)
 3. **Key Mappings** - Custom keybindings for window/buffer navigation, search, line movement, and file operations
-4. **Plugin Manager Bootstrap** - lazy.nvim installation (pinned to v11.17.5)
+4. **Plugin Manager Bootstrap** - lazy.nvim installation (always uses latest)
 5. **Plugin Setup** - `require("lazy").setup({...})` block for plugin specifications
-   - **UI Enhancements** - bufferline.nvim for buffer tabs
+   - **UI Enhancements** - bufferline.nvim for buffer tabs (with nvim-web-devicons)
    - **AI Completion** - copilot.vim for GitHub Copilot integration
    - **LSP Support** - mason.nvim + mason-lspconfig.nvim + nvim-lspconfig with automatic_enable
 6. **Auto Sync Plugins** - VimEnter autocmd that runs `Lazy sync` silently
