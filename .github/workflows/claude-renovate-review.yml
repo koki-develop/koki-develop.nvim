@@ -40,5 +40,6 @@ jobs:
       - name: Automerge Renovate PR
         if: steps.claude-renovate-review.outputs.safety-assessment == 'safe'
         env:
+          GH_TOKEN: ${{ github.token }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
         run: gh pr merge --repo "$GITHUB_REPOSITORY" --squash --auto --delete-branch "$PR_NUMBER"
