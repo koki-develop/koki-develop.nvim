@@ -307,3 +307,15 @@ require("lazy").setup({
     end,
   },
 })
+
+-- =============================================================================
+-- Auto Sync Plugins
+-- =============================================================================
+-- Automatically sync plugins on startup to ensure they match the commit SHAs
+-- specified in init.lua. This is useful when Renovate updates the commit SHAs.
+
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    require("lazy").sync({ wait = false, show = false })
+  end,
+})
