@@ -47,6 +47,11 @@ This configuration targets **Neovim 0.11+** and uses modern APIs:
   -- renovate: datasource=github-tags depName=org/repo
   commit = "...", -- vX.Y.Z
   ```
+- For plugins without regular releases (e.g., fzf-lua), use commit-based tracking:
+  ```lua
+  -- renovate: datasource=github-commits depName=org/repo
+  commit = "..."
+  ```
 - Renovate configuration is in `renovate.json`
 - `lazy-lock.json` is gitignored; `init.lua` is the source of truth
 - Plugins are automatically synced on startup via VimEnter autocmd
