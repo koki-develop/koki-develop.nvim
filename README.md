@@ -145,6 +145,7 @@ The following LSP servers are automatically installed via Mason:
 | `lua_ls` | Lua |
 | `gopls` | Go |
 | `ts_ls` | TypeScript / JavaScript |
+| `eslint` | JavaScript / TypeScript (linting) |
 
 ## License
 
