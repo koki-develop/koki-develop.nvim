@@ -32,6 +32,7 @@ Plugins will be automatically installed on first launch.
 | [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) | LSP configuration |
 | [mason.nvim](https://github.com/mason-org/mason.nvim) | LSP server manager |
 | [mason-lspconfig.nvim](https://github.com/mason-org/mason-lspconfig.nvim) | Mason and LSP integration |
+| [SchemaStore.nvim](https://github.com/b0o/SchemaStore.nvim) | JSON/YAML schema catalog |
 
 ## Keymaps
 

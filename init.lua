@@ -515,6 +515,8 @@ require("lazy").setup({
       { "mason-org/mason.nvim", commit = "44d1e90e1f66e077268191e3ee9d2ac97cc18e65" }, -- v2.2.1
       -- renovate: datasource=github-tags depName=mason-org/mason-lspconfig.nvim
       { "mason-org/mason-lspconfig.nvim", commit = "f2fa60409630ec2d24acf84494fb55e1d28d593c" }, -- v2.1.0
+      -- renovate: datasource=git-refs depName=b0o/SchemaStore.nvim
+      { "b0o/SchemaStore.nvim", commit = "9afa445602e6191917b4d32f1355e77b4525f905" },
       { "saghen/blink.cmp" },
     },
     config = function()
@@ -575,6 +577,32 @@ require("lazy").setup({
                 "${3rd}/luv/library",
               },
             },
+          },
+        },
+      })
+
+      -- -----------------------------------------------------------------------
+      -- JSON Language Server Configuration
+      -- -----------------------------------------------------------------------
+      -- Configure jsonls with SchemaStore for package.json, tsconfig.json, etc.
+      vim.lsp.config("jsonls", {
+        settings = {
+          json = {
+            schemas = require("schemastore").json.schemas(),
+            validate = { enable = true },
+          },
+        },
+      })
+
+      -- -----------------------------------------------------------------------
+      -- YAML Language Server Configuration
+      -- -----------------------------------------------------------------------
+      -- Configure yamlls with SchemaStore for GitHub Actions, docker-compose, etc.
+      vim.lsp.config("yamlls", {
+        settings = {
+          yaml = {
+            schemaStore = { enable = false, url = "" },
+            schemas = require("schemastore").yaml.schemas(),
           },
         },
       })
