@@ -80,15 +80,6 @@ Leader key is `<Space>`.
 |-----|------|-------------|
 | `<leader>e` | Normal | Toggle file explorer |
 
-Operations inside the tree:
-- `a`: Create new file/folder
-- `d`: Delete
-- `r`: Rename
-- `x`: Cut
-- `c`: Copy
-- `p`: Paste
-- `?`: Show help
-
 ### Fuzzy Finder (fzf-lua)
 
 | Key | Mode | Description |
