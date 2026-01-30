@@ -18,6 +18,14 @@ return {
 		commit = "a0db8bf7d6488b1dcd9cb5b0dfd6684a1e14f769", -- v1.15.0
 		dependencies = {
 			{ "nvim-tree/nvim-web-devicons" },
+			{ "nvim-lua/plenary.nvim" },
+			-- LSP file operations: auto-update imports on file rename/move
+			{
+				"antosha417/nvim-lsp-file-operations",
+				-- renovate: datasource=git-refs depName=antosha417/nvim-lsp-file-operations
+				commit = "b9c795d3973e8eec22706af14959bc60c579e771",
+				opts = {},
+			},
 		},
 		keys = {
 			{ "<leader>e", "<cmd>NvimTreeToggle<CR>", desc = "Toggle file explorer" },
