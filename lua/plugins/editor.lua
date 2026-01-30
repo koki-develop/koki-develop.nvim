@@ -106,7 +106,12 @@ return {
 				desc = "Live grep (resume)",
 			},
 		},
-		opts = { "default" },
+		opts = {
+			"default",
+			grep = {
+				rg_opts = "--column --line-number --no-heading --color=always --smart-case --hidden",
+			},
+		},
 	},
 
 	-- ==========================================================================
