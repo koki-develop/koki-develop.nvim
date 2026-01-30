@@ -4,30 +4,56 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Overview
 
-This is a Neovim configuration repository. The entire configuration is contained in a single `init.lua` file using lazy.nvim as the plugin manager.
+This is a Neovim configuration repository using lazy.nvim as the plugin manager. The configuration follows a modular structure for better organization and maintainability.
 
-## Architecture
+## Directory Structure
 
-The `init.lua` file is organized into these sections (in order):
-1. **Leader Key Configuration** - Sets space as leader/localleader
-2. **General Options** - Core Neovim settings (line numbers, indentation, search, display, splits, clipboard, file handling, performance)
-3. **Key Mappings** - Custom keybindings for window/buffer navigation, search, line movement, and file operations
-4. **Plugin Manager Bootstrap** - lazy.nvim installation (always uses latest)
-5. **Plugin Setup** - `require("lazy").setup({...})` block for plugin specifications
-   - **Colorscheme** - tokyonight.nvim (style: night)
-   - **UI Enhancements** - bufferline.nvim for buffer tabs (with nvim-web-devicons)
-   - **File Explorer** - nvim-tree.lua for file tree sidebar
-   - **Completion Engine** - blink.cmp for LSP/snippet/buffer completion (`C-y` accept, `C-n`/`C-p` navigate)
-   - **AI Completion** - copilot.vim for GitHub Copilot integration (ghost text)
-   - **Terminal** - toggleterm.nvim (`<leader>th` horizontal, `<leader>tv` vertical, `<leader>tf` float)
-   - **Fuzzy Finder** - fzf-lua (`<C-p>` files, `<C-g>` grep, `<leader><leader>` quick files)
-   - **Git Diff** - mini.diff for inline diff visualization (read-only, `[h`/`]h` navigate)
-   - **Statusline** - mini.statusline for minimal statusline (mode, git, diagnostics, filename, location)
-   - **Auto Pairs** - mini.pairs for automatic bracket/quote pairing
-   - **Trailing Whitespace** - mini.trailspace for highlighting/trimming (`<leader>tw` trim)
-   - **Code Formatter** - conform.nvim (`<leader>f` format, `<leader>W` save without format, format_on_save enabled)
-   - **LSP Support** - mason.nvim + mason-lspconfig.nvim + mason-tool-installer.nvim + nvim-lspconfig with automatic_enable
-6. **Auto Sync Plugins** - VimEnter autocmd that runs `Lazy sync` silently
+```
+~/.config/nvim/
+├── init.lua                      # Entry point (loads config modules)
+├── lua/
+│   ├── config/
+│   │   ├── options.lua           # vim.opt settings
+│   │   ├── keymaps.lua           # Key mappings (non-plugin)
+│   │   ├── autocmds.lua          # Autocommands
+│   │   └── lazy.lua              # lazy.nvim bootstrap & plugin loading
+│   └── plugins/
+│       ├── ui.lua                # Colorscheme, bufferline, statusline, icons
+│       ├── editor.lua            # File explorer, fuzzy finder, terminal, git diff
+│       ├── coding.lua            # Completion, AI, auto-pairs, formatting
+│       └── lsp.lua               # LSP servers, Mason, diagnostics
+├── CLAUDE.md
+└── renovate.json
+```
+
+## File Responsibilities
+
+### Core Config (lua/config/)
+- **options.lua** - Core Neovim settings (line numbers, indentation, search, display, splits, clipboard, file handling, performance)
+- **keymaps.lua** - Non-plugin keybindings (window navigation, search, line movement, file operations)
+- **autocmds.lua** - Autocommands (checktime for file changes)
+- **lazy.lua** - lazy.nvim bootstrap, plugin loading, and auto-sync on startup
+
+### Plugins (lua/plugins/)
+- **ui.lua** - Visual appearance
+  - tokyonight.nvim (colorscheme, style: night)
+  - bufferline.nvim (buffer tabs with nvim-web-devicons)
+  - mini.statusline (statusline)
+- **editor.lua** - File navigation and tools
+  - nvim-tree.lua (file explorer, `<leader>e`)
+  - fzf-lua (fuzzy finder, `<C-p>` files, `<C-g>` grep)
+  - toggleterm.nvim (terminal, `<leader>th/tv/tf`)
+  - mini.diff (git diff signs, `[h`/`]h` navigation)
+- **coding.lua** - Code editing support
+  - blink.cmp (completion, `C-y` accept, `C-n`/`C-p` navigate)
+  - copilot.vim (AI completion)
+  - mini.pairs (auto brackets)
+  - mini.trailspace (trailing whitespace, `<leader>tw` trim)
+  - conform.nvim (formatter, `<leader>f`, format_on_save)
+- **lsp.lua** - Language Server Protocol
+  - nvim-lspconfig + mason.nvim + mason-lspconfig.nvim
+  - mason-tool-installer.nvim + SchemaStore.nvim
+  - LSP keybindings (`gd`, `gr`, `K`, `<leader>rn`, `<leader>ca`, etc.)
 
 ## Key Conventions
 
@@ -36,6 +62,36 @@ The `init.lua` file is organized into these sections (in order):
 - Plugins are managed via lazy.nvim with lazy-loading support
 - No swap files (uses undo files + version control instead)
 - Prefer minimal configurations over complex setups
+
+## lazy.nvim: opts vs config
+
+Prefer `opts` over `config` when possible:
+
+```lua
+-- Good: Use opts for simple setup
+opts = {
+  option1 = true,
+  option2 = "value",
+},
+
+-- Good: Use opts function for dynamic values
+opts = function()
+  return { ... }
+end,
+
+-- Required: Use config when additional logic is needed
+config = function()
+  require("plugin").setup({ ... })
+  vim.cmd.colorscheme("...")  -- Additional commands
+  vim.api.nvim_create_autocmd(...)  -- Additional autocmds
+end,
+```
+
+**Use `config` when:**
+- Need to call `vim.cmd` (e.g., colorscheme)
+- Need to create autocmds after setup
+- Need to call multiple setup functions (e.g., lsp.lua)
+- Need custom logic beyond passing options
 
 ## Neovim Version
 
@@ -59,7 +115,7 @@ This configuration targets **Neovim 0.11+** and uses modern APIs:
   commit = "..."
   ```
 - Renovate configuration is in `renovate.json`
-- `lazy-lock.json` is gitignored; `init.lua` is the source of truth
+- `lazy-lock.json` is gitignored; plugin files in `lua/plugins/` are the source of truth
 - Plugins are automatically synced on startup via VimEnter autocmd
 - To check the latest version and commit hash of a plugin:
   ```bash
@@ -72,4 +128,7 @@ This configuration targets **Neovim 0.11+** and uses modern APIs:
 
 ## Testing Changes
 
-To test configuration changes, reload Neovim or run `:source %` on the init.lua file. For lazy.nvim changes, use `:Lazy` to access the plugin manager UI.
+To test configuration changes:
+- Reload Neovim
+- For specific module changes: `:source lua/config/<module>.lua` or `:source lua/plugins/<module>.lua`
+- For lazy.nvim changes: `:Lazy` to access the plugin manager UI
