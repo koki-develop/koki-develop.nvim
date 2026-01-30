@@ -119,7 +119,7 @@ return {
 		config = function()
 			require("toggleterm").setup({
 				open_mapping = [[<C-\>]],
-				direction = "vertical",
+				direction = "float",
 				size = function(term)
 					if term.direction == "horizontal" then
 						return vim.o.lines * 0.3
