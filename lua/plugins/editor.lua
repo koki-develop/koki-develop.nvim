@@ -57,6 +57,14 @@ return {
 				git_ignored = false, -- Show gitignored files
 			},
 
+			-- ---------------------------------------------------------------------
+			-- Focus Current File
+			-- ---------------------------------------------------------------------
+			-- Automatically focus the current buffer's file when opening the tree.
+			update_focused_file = {
+				enable = true,
+			},
+
 			-- Other options use sensible defaults:
 			-- - renderer.icons.show: file/folder/git icons enabled by default
 			-- - sort.sorter: "name" (alphabetical) by default
