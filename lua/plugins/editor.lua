@@ -86,16 +86,16 @@ return {
 			{
 				"<C-p>",
 				function()
-					require("fzf-lua").files()
+					require("fzf-lua").files({ resume = true })
 				end,
-				desc = "Find files",
+				desc = "Find files (resume)",
 			},
 			{
 				"<C-g>",
 				function()
-					require("fzf-lua").live_grep()
+					require("fzf-lua").live_grep({ resume = true })
 				end,
-				desc = "Live grep",
+				desc = "Live grep (resume)",
 			},
 		},
 		opts = { "default" },
