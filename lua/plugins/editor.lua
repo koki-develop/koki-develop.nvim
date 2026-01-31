@@ -59,6 +59,7 @@ return {
 		},
 		opts = {
 			explorer = { replace_netrw = true },
+			indent = {},
 			picker = {
 				enabled = true,
 				sources = {
