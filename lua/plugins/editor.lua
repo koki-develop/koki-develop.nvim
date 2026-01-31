@@ -61,14 +61,13 @@ return {
 			explorer = { replace_netrw = true },
 			indent = {},
 			picker = {
-				enabled = true,
 				sources = {
 					files = { hidden = true }, -- include dotfiles
 					grep = { hidden = true }, -- include dotfiles
 					explorer = { hidden = true }, -- include dotfiles
 				},
 			},
-			rename = { enabled = true },
+			rename = {},
 			terminal = {
 				win = {
 					position = "float",
