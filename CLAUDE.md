@@ -60,6 +60,7 @@ This is a Neovim configuration repository using lazy.nvim as the plugin manager.
 - Plugins are managed via lazy.nvim with lazy-loading support
 - No swap files (uses undo files + version control instead)
 - Prefer minimal configurations over complex setups
+- Do not use conventional commits (e.g., `feat:`, `fix:`) for commit messages
 
 ## lazy.nvim: opts vs config
 
