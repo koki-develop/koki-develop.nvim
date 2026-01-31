@@ -19,11 +19,10 @@ Plugins will be automatically installed on first launch.
 | [tokyonight.nvim](https://github.com/folke/tokyonight.nvim) | Colorscheme (style: night) |
 | [bufferline.nvim](https://github.com/akinsho/bufferline.nvim) | Display buffers as tabs |
 | [nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons) | File type icons |
-| [nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua) | File explorer |
 | [blink.cmp](https://github.com/saghen/blink.cmp) | Completion engine (LSP, snippets, buffer) |
 | [friendly-snippets](https://github.com/rafamadriz/friendly-snippets) | Snippet collection |
 | [copilot.vim](https://github.com/github/copilot.vim) | GitHub Copilot AI completion (ghost text) |
-| [snacks.nvim](https://github.com/folke/snacks.nvim) | Terminal (floating) |
+| [snacks.nvim](https://github.com/folke/snacks.nvim) | File explorer, terminal, LSP rename |
 | [fzf-lua](https://github.com/ibhagwan/fzf-lua) | Fuzzy finder |
 | [mini.diff](https://github.com/nvim-mini/mini.diff) | Git diff visualization |
 | [mini.statusline](https://github.com/nvim-mini/mini.statusline) | Minimal statusline |
@@ -74,11 +73,19 @@ Leader key is `<Space>`.
 | `J` | Visual | Move selection down |
 | `K` | Visual | Move selection up |
 
-### File Explorer (nvim-tree)
+### File Explorer (snacks.nvim)
 
 | Key | Mode | Description |
 |-----|------|-------------|
 | `<leader>e` | Normal | Toggle file explorer |
+| `l` / `<CR>` | Explorer | Open file / toggle directory |
+| `h` | Explorer | Close directory |
+| `<BS>` | Explorer | Go up one directory |
+| `a` | Explorer | Add new file/folder |
+| `d` | Explorer | Delete |
+| `r` | Explorer | Rename |
+| `y` | Explorer | Yank file paths |
+| `p` | Explorer | Paste |
 
 ### Fuzzy Finder (fzf-lua)
 

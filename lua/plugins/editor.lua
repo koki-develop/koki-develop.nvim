@@ -5,78 +5,44 @@
 
 return {
 	-- ==========================================================================
-	-- File Explorer
+	-- File Explorer & Terminal (snacks.nvim)
 	-- ==========================================================================
-	-- nvim-tree.lua: A file explorer tree for neovim.
-	-- Toggle with <leader>e, navigate with standard vim motions.
-	-- Basic operations in the tree:
-	--   a: Create new file/folder    d: Delete    r: Rename
-	--   x: Cut    c: Copy    p: Paste    ?: Show help
+	-- snacks.nvim: File explorer and terminal
+	-- Explorer: Toggle with <leader>e
+	-- Navigation: l/<CR> to open, h to close dir, <BS> to go up
+	-- Operations: a (add), d (delete), r (rename), y (yank), p (paste)
+	-- Terminal: Toggle floating terminal with <C-\>
 	{
-		"nvim-tree/nvim-tree.lua",
-		-- renovate: datasource=github-tags depName=nvim-tree/nvim-tree.lua
-		commit = "a0db8bf7d6488b1dcd9cb5b0dfd6684a1e14f769", -- v1.15.0
-		dependencies = {
-			{ "nvim-tree/nvim-web-devicons" },
-			{ "nvim-lua/plenary.nvim" },
-			-- LSP file operations: auto-update imports on file rename/move
-			{
-				"antosha417/nvim-lsp-file-operations",
-				-- renovate: datasource=git-refs depName=antosha417/nvim-lsp-file-operations
-				commit = "b9c795d3973e8eec22706af14959bc60c579e771",
-				opts = {},
-			},
-		},
+		"folke/snacks.nvim",
+		-- renovate: datasource=github-tags depName=folke/snacks.nvim
+		commit = "a4e46becca45eb65c73a388634b1ce8aad629ae0", -- v2.30.0
 		keys = {
-			{ "<leader>e", "<cmd>NvimTreeToggle<CR>", desc = "Toggle file explorer" },
+			{
+				"<leader>e",
+				function()
+					require("snacks").explorer()
+				end,
+				desc = "Toggle file explorer",
+			},
+			{
+				"<C-\\>",
+				function()
+					require("snacks").terminal.toggle()
+				end,
+				mode = { "n", "t" },
+				desc = "Toggle terminal",
+			},
 		},
-		-- -------------------------------------------------------------------------
-		-- Disable Netrw (init runs BEFORE plugin loads)
-		-- -------------------------------------------------------------------------
-		-- Netrw is Neovim's built-in file explorer. We disable it to prevent
-		-- conflicts with nvim-tree. This must be done before nvim-tree loads,
-		-- so we use `init` instead of `config`. The `init` function is called
-		-- during startup, even before the plugin is loaded via lazy-loading.
-		init = function()
-			vim.g.loaded_netrw = 1
-			vim.g.loaded_netrwPlugin = 1
-		end,
-		-- -------------------------------------------------------------------------
-		-- nvim-tree Options
-		-- -------------------------------------------------------------------------
 		opts = {
-			-- ---------------------------------------------------------------------
-			-- View Settings
-			-- ---------------------------------------------------------------------
-			-- Configure how the file tree window is displayed.
-			-- - width: Width of the tree window in columns (default: 30)
-			view = {
-				width = 30,
+			explorer = { replace_netrw = true },
+			picker = { enabled = true },
+			rename = { enabled = true },
+			terminal = {
+				win = {
+					position = "float",
+					border = "rounded",
+				},
 			},
-
-			-- ---------------------------------------------------------------------
-			-- Filter Settings
-			-- ---------------------------------------------------------------------
-			-- Configure which files are hidden in the tree.
-			-- - dotfiles: When true, files starting with '.' are hidden
-			-- Note: Press 'H' in the tree to toggle dotfiles visibility on the fly.
-			filters = {
-				dotfiles = false, -- Show dotfiles (hidden files)
-				git_ignored = false, -- Show gitignored files
-			},
-
-			-- ---------------------------------------------------------------------
-			-- Focus Current File
-			-- ---------------------------------------------------------------------
-			-- Automatically focus the current buffer's file when opening the tree.
-			update_focused_file = {
-				enable = true,
-			},
-
-			-- Other options use sensible defaults:
-			-- - renderer.icons.show: file/folder/git icons enabled by default
-			-- - sort.sorter: "name" (alphabetical) by default
-			-- - git integration: enabled by default
 		},
 	},
 
@@ -110,34 +76,6 @@ return {
 			"default",
 			grep = {
 				rg_opts = "--column --line-number --no-heading --color=always --smart-case --hidden",
-			},
-		},
-	},
-
-	-- ==========================================================================
-	-- Terminal
-	-- ==========================================================================
-	-- snacks.nvim terminal: Toggle floating terminal with <C-\>
-	{
-		"folke/snacks.nvim",
-		-- renovate: datasource=github-tags depName=folke/snacks.nvim
-		commit = "a4e46becca45eb65c73a388634b1ce8aad629ae0", -- v2.30.0
-		keys = {
-			{
-				"<C-\\>",
-				function()
-					require("snacks").terminal.toggle()
-				end,
-				mode = { "n", "t" },
-				desc = "Toggle terminal",
-			},
-		},
-		opts = {
-			terminal = {
-				win = {
-					position = "float",
-					border = "rounded",
-				},
 			},
 		},
 	},

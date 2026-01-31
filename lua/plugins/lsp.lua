@@ -30,21 +30,15 @@ return {
 		-- renovate: datasource=git-refs depName=b0o/SchemaStore.nvim
 		{ "b0o/SchemaStore.nvim", commit = "9afa445602e6191917b4d32f1355e77b4525f905" },
 		{ "saghen/blink.cmp" },
-		{ "antosha417/nvim-lsp-file-operations" },
 	},
 	config = function()
 		-- -----------------------------------------------------------------------
-		-- LSP Capabilities (blink.cmp + lsp-file-operations)
+		-- LSP Capabilities (blink.cmp)
 		-- -----------------------------------------------------------------------
 		-- Apply capabilities to all LSP servers:
 		-- - blink.cmp: Enhanced completion features like snippets
-		-- - lsp-file-operations: File rename/move with import updates
 		vim.lsp.config("*", {
-			capabilities = vim.tbl_deep_extend(
-				"force",
-				require("blink.cmp").get_lsp_capabilities(),
-				require("lsp-file-operations").default_capabilities()
-			),
+			capabilities = require("blink.cmp").get_lsp_capabilities(),
 		})
 
 		-- -----------------------------------------------------------------------

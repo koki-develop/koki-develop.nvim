@@ -40,9 +40,8 @@ This is a Neovim configuration repository using lazy.nvim as the plugin manager.
   - bufferline.nvim (buffer tabs with nvim-web-devicons)
   - mini.statusline (statusline)
 - **editor.lua** - File navigation and tools
-  - nvim-tree.lua (file explorer, `<leader>e`)
+  - snacks.nvim (file explorer `<leader>e`, terminal `<C-\>`)
   - fzf-lua (fuzzy finder, `<C-p>` files, `<C-g>` grep)
-  - snacks.nvim (terminal, `<C-\>` toggle floating)
   - mini.diff (git diff signs, `[h`/`]h` navigation)
 - **coding.lua** - Code editing support
   - blink.cmp (completion, `C-y` accept, `C-n`/`C-p` navigate)
