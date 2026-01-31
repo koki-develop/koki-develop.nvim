@@ -21,8 +21,7 @@ This is a Neovim configuration repository using lazy.nvim as the plugin manager.
 │       ├── ui.lua                # Colorscheme, bufferline, statusline, icons
 │       ├── editor.lua            # File explorer, fuzzy finder, terminal, git diff
 │       ├── coding.lua            # Completion, AI, auto-pairs, formatting
-│       ├── lsp.lua               # LSP servers, Mason, diagnostics
-│       └── treesitter.lua        # Syntax highlighting via tree-sitter
+│       └── lsp.lua               # LSP servers, Mason, diagnostics
 ├── CLAUDE.md
 └── renovate.json
 ```
@@ -54,8 +53,6 @@ This is a Neovim configuration repository using lazy.nvim as the plugin manager.
   - nvim-lspconfig + mason.nvim + mason-lspconfig.nvim
   - mason-tool-installer.nvim + SchemaStore.nvim
   - LSP keybindings (`gd`, `gD`, `gi`, `gr`, `K`, `<leader>rn`, `<leader>ca`, `[d`/`]d`, `<leader>d`)
-- **treesitter.lua** - Syntax highlighting
-  - nvim-treesitter (main branch, tree-sitter based highlighting)
 
 ## Key Conventions
 
