@@ -30,18 +30,18 @@ This is a Neovim configuration repository using lazy.nvim as the plugin manager.
 
 ### Core Config (lua/config/)
 - **options.lua** - Core Neovim settings (line numbers, indentation, search, display, splits, clipboard, file handling, performance)
-- **keymaps.lua** - Non-plugin keybindings (window navigation, search, line movement, file operations)
+- **keymaps.lua** - Non-plugin keybindings (window navigation `C-hjkl`, search `<leader>h`, line movement `J/K`, save `<leader>w`/`<leader>W`, quit `<leader>q`)
 - **autocmds.lua** - Autocommands (checktime for file changes)
 - **lazy.lua** - lazy.nvim bootstrap, plugin loading, and auto-sync on startup
 
 ### Plugins (lua/plugins/)
 - **ui.lua** - Visual appearance
   - tokyonight.nvim (colorscheme, style: night)
-  - bufferline.nvim (buffer tabs with nvim-web-devicons)
+  - bufferline.nvim (buffer tabs, `S-h`/`S-l` cycle, `<leader>x` close)
   - mini.statusline (statusline)
 - **editor.lua** - File navigation and tools
   - snacks.nvim (explorer `<leader>e`, picker `<C-p>`/`<C-g>`, terminal `<C-\>`)
-  - mini.diff (git diff signs, `[h`/`]h` navigation)
+  - mini.diff (git diff signs, `[h`/`]h`/`[H`/`]H` navigation)
 - **coding.lua** - Code editing support
   - blink.cmp (completion, `C-y` accept, `C-n`/`C-p` navigate)
   - copilot.vim (AI completion)
@@ -51,7 +51,7 @@ This is a Neovim configuration repository using lazy.nvim as the plugin manager.
 - **lsp.lua** - Language Server Protocol
   - nvim-lspconfig + mason.nvim + mason-lspconfig.nvim
   - mason-tool-installer.nvim + SchemaStore.nvim
-  - LSP keybindings (`gd`, `gr`, `K`, `<leader>rn`, `<leader>ca`, etc.)
+  - LSP keybindings (`gd`, `gD`, `gi`, `gr`, `K`, `<leader>rn`, `<leader>ca`, `[d`/`]d`, `<leader>d`)
 
 ## Key Conventions
 
