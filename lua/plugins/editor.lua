@@ -59,7 +59,7 @@ return {
 		},
 		opts = {
 			explorer = { replace_netrw = true },
-			indent = {},
+			indent = { animate = { enabled = false } },
 			picker = {
 				sources = {
 					files = { hidden = true }, -- include dotfiles
