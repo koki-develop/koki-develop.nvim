@@ -64,6 +64,7 @@ return {
 				sources = {
 					files = { hidden = true }, -- include dotfiles
 					grep = { hidden = true }, -- include dotfiles
+					explorer = { hidden = true }, -- include dotfiles
 				},
 			},
 			rename = { enabled = true },
@@ -74,6 +75,11 @@ return {
 				},
 			},
 		},
+		config = function(_, opts)
+			require("snacks").setup(opts)
+			-- Display hidden files with normal style (not dimmed)
+			vim.api.nvim_set_hl(0, "SnacksPickerPathHidden", { link = "SnacksPickerPath" })
+		end,
 	},
 
 	-- ==========================================================================
