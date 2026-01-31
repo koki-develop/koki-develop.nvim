@@ -5,17 +5,21 @@
 
 return {
 	-- ==========================================================================
-	-- File Explorer & Terminal (snacks.nvim)
+	-- File Explorer, Fuzzy Finder & Terminal (snacks.nvim)
 	-- ==========================================================================
-	-- snacks.nvim: File explorer and terminal
+	-- snacks.nvim: File explorer, fuzzy finder, terminal
 	-- Explorer: Toggle with <leader>e
 	-- Navigation: l/<CR> to open, h to close dir, <BS> to go up
 	-- Operations: a (add), d (delete), r (rename), y (yank), p (paste)
+	-- Picker: <C-p> files, <C-g> grep
 	-- Terminal: Toggle floating terminal with <C-\>
 	{
 		"folke/snacks.nvim",
 		-- renovate: datasource=github-tags depName=folke/snacks.nvim
 		commit = "a4e46becca45eb65c73a388634b1ce8aad629ae0", -- v2.30.0
+		dependencies = {
+			{ "nvim-tree/nvim-web-devicons" },
+		},
 		keys = {
 			{
 				"<leader>e",
@@ -23,6 +27,26 @@ return {
 					require("snacks").explorer()
 				end,
 				desc = "Toggle file explorer",
+			},
+			{
+				"<C-p>",
+				function()
+					local picker = require("snacks").picker
+					if not picker.resume({ source = "files" }) then
+						picker.files()
+					end
+				end,
+				desc = "Find files (resume)",
+			},
+			{
+				"<C-g>",
+				function()
+					local picker = require("snacks").picker
+					if not picker.resume({ source = "grep" }) then
+						picker.grep()
+					end
+				end,
+				desc = "Live grep (resume)",
 			},
 			{
 				"<C-\\>",
@@ -35,47 +59,19 @@ return {
 		},
 		opts = {
 			explorer = { replace_netrw = true },
-			picker = { enabled = true },
+			picker = {
+				enabled = true,
+				sources = {
+					files = { hidden = true }, -- include dotfiles
+					grep = { hidden = true }, -- include dotfiles
+				},
+			},
 			rename = { enabled = true },
 			terminal = {
 				win = {
 					position = "float",
 					border = "rounded",
 				},
-			},
-		},
-	},
-
-	-- ==========================================================================
-	-- Fuzzy Finder
-	-- ==========================================================================
-	{
-		"ibhagwan/fzf-lua",
-		-- renovate: datasource=git-refs depName=ibhagwan/fzf-lua
-		commit = "c9e07380df2826c63a8ae396559872b2553c22bc",
-		dependencies = {
-			{ "nvim-tree/nvim-web-devicons" },
-		},
-		keys = {
-			{
-				"<C-p>",
-				function()
-					require("fzf-lua").files({ resume = true })
-				end,
-				desc = "Find files (resume)",
-			},
-			{
-				"<C-g>",
-				function()
-					require("fzf-lua").live_grep({ resume = true })
-				end,
-				desc = "Live grep (resume)",
-			},
-		},
-		opts = {
-			"default",
-			grep = {
-				rg_opts = "--column --line-number --no-heading --color=always --smart-case --hidden",
 			},
 		},
 	},

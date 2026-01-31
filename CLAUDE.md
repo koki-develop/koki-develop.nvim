@@ -40,8 +40,7 @@ This is a Neovim configuration repository using lazy.nvim as the plugin manager.
   - bufferline.nvim (buffer tabs with nvim-web-devicons)
   - mini.statusline (statusline)
 - **editor.lua** - File navigation and tools
-  - snacks.nvim (file explorer `<leader>e`, terminal `<C-\>`)
-  - fzf-lua (fuzzy finder, `<C-p>` files, `<C-g>` grep)
+  - snacks.nvim (explorer `<leader>e`, picker `<C-p>`/`<C-g>`, terminal `<C-\>`)
   - mini.diff (git diff signs, `[h`/`]h` navigation)
 - **coding.lua** - Code editing support
   - blink.cmp (completion, `C-y` accept, `C-n`/`C-p` navigate)
@@ -108,7 +107,7 @@ This configuration targets **Neovim 0.11+** and uses modern APIs:
   -- renovate: datasource=github-tags depName=org/repo
   commit = "...", -- vX.Y.Z
   ```
-- For plugins without regular releases (e.g., fzf-lua), use commit-based tracking:
+- For plugins without regular releases (e.g., SchemaStore.nvim), use commit-based tracking:
   ```lua
   -- renovate: datasource=git-refs depName=org/repo
   commit = "..."

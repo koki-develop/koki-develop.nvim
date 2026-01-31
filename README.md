@@ -22,8 +22,7 @@ Plugins will be automatically installed on first launch.
 | [blink.cmp](https://github.com/saghen/blink.cmp) | Completion engine (LSP, snippets, buffer) |
 | [friendly-snippets](https://github.com/rafamadriz/friendly-snippets) | Snippet collection |
 | [copilot.vim](https://github.com/github/copilot.vim) | GitHub Copilot AI completion (ghost text) |
-| [snacks.nvim](https://github.com/folke/snacks.nvim) | File explorer, terminal, LSP rename |
-| [fzf-lua](https://github.com/ibhagwan/fzf-lua) | Fuzzy finder |
+| [snacks.nvim](https://github.com/folke/snacks.nvim) | File explorer, fuzzy finder, terminal |
 | [mini.diff](https://github.com/nvim-mini/mini.diff) | Git diff visualization |
 | [mini.statusline](https://github.com/nvim-mini/mini.statusline) | Minimal statusline |
 | [mini.pairs](https://github.com/nvim-mini/mini.pairs) | Auto pairs (brackets, quotes) |
@@ -87,17 +86,12 @@ Leader key is `<Space>`.
 | `y` | Explorer | Yank file paths |
 | `p` | Explorer | Paste |
 
-### Fuzzy Finder (fzf-lua)
+### Fuzzy Finder & Terminal (snacks.nvim)
 
 | Key | Mode | Description |
 |-----|------|-------------|
 | `<C-p>` | Normal | Find files |
 | `<C-g>` | Normal | Live grep |
-
-### Terminal (snacks.nvim)
-
-| Key | Mode | Description |
-|-----|------|-------------|
 | `<C-\>` | Normal/Terminal | Toggle floating terminal |
 
 ### Git Diff (mini.diff)

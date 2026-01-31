@@ -154,22 +154,19 @@ return {
 			callback = function(args)
 				local opts = { buffer = args.buf, silent = true }
 
-				-- Navigation (using fzf-lua for multi-result handling)
+				-- Navigation (using snacks.nvim picker for multi-result handling)
 				-- gd: Jump to where the symbol under cursor is defined (implementation)
 				-- gD: Jump to where the symbol is declared (e.g., header file in C/C++)
 				--     Note: In many languages, declaration and definition are the same
 				-- gi: Jump to the implementation of an interface or abstract method
 				-- gr: Show all references to the symbol under cursor
 				-- K:  Show hover documentation for the symbol under cursor
-				-- fzf-lua defaults to jump1=true (single result jumps directly)
-				-- gr uses jump1=false to always show the picker for references
-				local fzf = require("fzf-lua")
-				vim.keymap.set("n", "gd", fzf.lsp_definitions, opts)
-				vim.keymap.set("n", "gD", fzf.lsp_declarations, opts)
-				vim.keymap.set("n", "gi", fzf.lsp_implementations, opts)
-				vim.keymap.set("n", "gr", function()
-					fzf.lsp_references({ jump1 = false })
-				end, opts)
+				-- Note: Single result auto-jumps, multiple results show picker
+				local picker = require("snacks").picker
+				vim.keymap.set("n", "gd", picker.lsp_definitions, opts)
+				vim.keymap.set("n", "gD", picker.lsp_declarations, opts)
+				vim.keymap.set("n", "gi", picker.lsp_implementations, opts)
+				vim.keymap.set("n", "gr", picker.lsp_references, opts)
 				vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 
 				-- Refactoring
