@@ -23,7 +23,7 @@ Plugins will be automatically installed on first launch.
 | [blink.cmp](https://github.com/saghen/blink.cmp) | Completion engine (LSP, snippets, buffer) |
 | [friendly-snippets](https://github.com/rafamadriz/friendly-snippets) | Snippet collection |
 | [copilot.vim](https://github.com/github/copilot.vim) | GitHub Copilot AI completion (ghost text) |
-| [toggleterm.nvim](https://github.com/akinsho/toggleterm.nvim) | Terminal management |
+| [snacks.nvim](https://github.com/folke/snacks.nvim) | Terminal (floating) |
 | [fzf-lua](https://github.com/ibhagwan/fzf-lua) | Fuzzy finder |
 | [mini.diff](https://github.com/nvim-mini/mini.diff) | Git diff visualization |
 | [mini.statusline](https://github.com/nvim-mini/mini.statusline) | Minimal statusline |
@@ -87,15 +87,11 @@ Leader key is `<Space>`.
 | `<C-p>` | Normal | Find files |
 | `<C-g>` | Normal | Live grep |
 
-### Terminal (toggleterm)
+### Terminal (snacks.nvim)
 
 | Key | Mode | Description |
 |-----|------|-------------|
-| `<C-\>` | Normal/Terminal | Toggle terminal |
-| `<leader>th` | Normal | Open horizontal terminal |
-| `<leader>tv` | Normal | Open vertical terminal |
-| `<leader>tf` | Normal | Open floating terminal |
-| `<Esc>` | Terminal | Exit terminal mode |
+| `<C-\>` | Normal/Terminal | Toggle floating terminal |
 
 ### Git Diff (mini.diff)
 

@@ -117,42 +117,29 @@ return {
 	-- ==========================================================================
 	-- Terminal
 	-- ==========================================================================
-	-- toggleterm.nvim: Toggle terminal with different directions
-	-- <leader>th: horizontal, <leader>tv: vertical, <leader>tf: float
+	-- snacks.nvim terminal: Toggle floating terminal with <C-\>
 	{
-		"akinsho/toggleterm.nvim",
-		-- renovate: datasource=github-tags depName=akinsho/toggleterm.nvim
-		commit = "50ea089fc548917cc3cc16b46a8211833b9e3c7c", -- v2.13.1
+		"folke/snacks.nvim",
+		-- renovate: datasource=github-tags depName=folke/snacks.nvim
+		commit = "a4e46becca45eb65c73a388634b1ce8aad629ae0", -- v2.30.0
 		keys = {
-			{ "<C-\\>", desc = "Toggle terminal" },
-			{ "<leader>th", "<cmd>ToggleTerm direction=horizontal<CR>", desc = "Terminal (horizontal)" },
-			{ "<leader>tv", "<cmd>ToggleTerm direction=vertical<CR>", desc = "Terminal (vertical)" },
-			{ "<leader>tf", "<cmd>ToggleTerm direction=float<CR>", desc = "Terminal (float)" },
+			{
+				"<C-\\>",
+				function()
+					require("snacks").terminal.toggle()
+				end,
+				mode = { "n", "t" },
+				desc = "Toggle terminal",
+			},
 		},
-		config = function()
-			require("toggleterm").setup({
-				open_mapping = [[<C-\>]],
-				direction = "float",
-				size = function(term)
-					if term.direction == "horizontal" then
-						return vim.o.lines * 0.3
-					elseif term.direction == "vertical" then
-						return vim.o.columns * 0.4
-					end
-				end,
-				float_opts = {
-					border = "curved",
+		opts = {
+			terminal = {
+				win = {
+					position = "float",
+					border = "rounded",
 				},
-			})
-
-			-- Terminal mode: <Esc> to return to normal mode
-			vim.api.nvim_create_autocmd("TermOpen", {
-				pattern = "term://*",
-				callback = function()
-					vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { buffer = 0 })
-				end,
-			})
-		end,
+			},
+		},
 	},
 
 	-- ==========================================================================

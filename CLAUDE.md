@@ -42,7 +42,7 @@ This is a Neovim configuration repository using lazy.nvim as the plugin manager.
 - **editor.lua** - File navigation and tools
   - nvim-tree.lua (file explorer, `<leader>e`)
   - fzf-lua (fuzzy finder, `<C-p>` files, `<C-g>` grep)
-  - toggleterm.nvim (terminal, `<leader>th/tv/tf`)
+  - snacks.nvim (terminal, `<C-\>` toggle floating)
   - mini.diff (git diff signs, `[h`/`]h` navigation)
 - **coding.lua** - Code editing support
   - blink.cmp (completion, `C-y` accept, `C-n`/`C-p` navigate)
