@@ -138,4 +138,35 @@ return {
 			}
 		end,
 	},
+
+	-- ==========================================================================
+	-- TODO Comments
+	-- ==========================================================================
+	-- todo-comments.nvim: Highlight and search TODO, FIXME, BUG, etc. in comments.
+	-- Supports quickfix list, Telescope, and jump navigation.
+	-- ]t / [t: Jump to next/prev TODO comment
+	{
+		"folke/todo-comments.nvim",
+		-- renovate: datasource=github-tags depName=folke/todo-comments.nvim
+		commit = "31e3c38ce9b29781e4422fc0322eb0a21f4e8668", -- v1.5.0
+		event = "VeryLazy",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		keys = {
+			{
+				"]t",
+				function()
+					require("todo-comments").jump_next()
+				end,
+				desc = "Next TODO",
+			},
+			{
+				"[t",
+				function()
+					require("todo-comments").jump_prev()
+				end,
+				desc = "Prev TODO",
+			},
+		},
+		opts = {},
+	},
 }
