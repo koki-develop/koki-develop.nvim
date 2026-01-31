@@ -42,7 +42,13 @@ return {
 		keys = {
 			{ "<S-h>", "<cmd>BufferLineCyclePrev<CR>", desc = "Previous buffer" },
 			{ "<S-l>", "<cmd>BufferLineCycleNext<CR>", desc = "Next buffer" },
-			{ "<leader>x", "<cmd>bdelete<CR>", desc = "Close buffer" },
+			{
+				"<leader>x",
+				function()
+					require("snacks").bufdelete()
+				end,
+				desc = "Close buffer",
+			},
 		},
 		opts = {
 			options = {
