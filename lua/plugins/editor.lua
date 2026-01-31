@@ -7,12 +7,13 @@ return {
 	-- ==========================================================================
 	-- File Explorer, Fuzzy Finder & Terminal (snacks.nvim)
 	-- ==========================================================================
-	-- snacks.nvim: File explorer, fuzzy finder, terminal
+	-- snacks.nvim: File explorer, fuzzy finder, terminal, lazygit
 	-- Explorer: Toggle with <leader>e
 	-- Navigation: l/<CR> to open, h to close dir, <BS> to go up
 	-- Operations: a (add), d (delete), r (rename), y (yank relative path), p (paste)
 	-- Picker: <C-p> files, <C-g> grep
 	-- Terminal: Toggle floating terminal with <C-\>
+	-- Lazygit: <leader>gg open, <leader>gl log, <leader>gf file log
 	{
 		"folke/snacks.nvim",
 		-- renovate: datasource=github-tags depName=folke/snacks.nvim
@@ -56,10 +57,32 @@ return {
 				mode = { "n", "t" },
 				desc = "Toggle terminal",
 			},
+			{
+				"<leader>gg",
+				function()
+					require("snacks").lazygit()
+				end,
+				desc = "Open Lazygit",
+			},
+			{
+				"<leader>gl",
+				function()
+					require("snacks").lazygit.log()
+				end,
+				desc = "Lazygit log",
+			},
+			{
+				"<leader>gf",
+				function()
+					require("snacks").lazygit.log_file()
+				end,
+				desc = "Lazygit file log",
+			},
 		},
 		opts = {
 			explorer = { replace_netrw = true },
 			indent = { animate = { enabled = false } },
+			lazygit = {},
 			picker = {
 				sources = {
 					files = { hidden = true }, -- include dotfiles
