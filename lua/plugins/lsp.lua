@@ -162,11 +162,18 @@ return {
 				-- gr: Show all references to the symbol under cursor
 				-- K:  Show hover documentation for the symbol under cursor
 				-- Note: Single result auto-jumps, multiple results show picker
-				local picker = require("snacks").picker
-				vim.keymap.set("n", "gd", picker.lsp_definitions, opts)
-				vim.keymap.set("n", "gD", picker.lsp_declarations, opts)
-				vim.keymap.set("n", "gi", picker.lsp_implementations, opts)
-				vim.keymap.set("n", "gr", picker.lsp_references, opts)
+				vim.keymap.set("n", "gd", function()
+					require("snacks").picker.lsp_definitions()
+				end, opts)
+				vim.keymap.set("n", "gD", function()
+					require("snacks").picker.lsp_declarations()
+				end, opts)
+				vim.keymap.set("n", "gi", function()
+					require("snacks").picker.lsp_implementations()
+				end, opts)
+				vim.keymap.set("n", "gr", function()
+					require("snacks").picker.lsp_references()
+				end, opts)
 				vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 
 				-- Refactoring
