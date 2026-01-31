@@ -10,7 +10,7 @@ return {
 	-- snacks.nvim: File explorer, fuzzy finder, terminal
 	-- Explorer: Toggle with <leader>e
 	-- Navigation: l/<CR> to open, h to close dir, <BS> to go up
-	-- Operations: a (add), d (delete), r (rename), y (yank), p (paste)
+	-- Operations: a (add), d (delete), r (rename), y (yank relative path), p (paste)
 	-- Picker: <C-p> files, <C-g> grep
 	-- Terminal: Toggle floating terminal with <C-\>
 	{
@@ -64,7 +64,32 @@ return {
 				sources = {
 					files = { hidden = true }, -- include dotfiles
 					grep = { hidden = true }, -- include dotfiles
-					explorer = { hidden = true }, -- include dotfiles
+					explorer = {
+						hidden = true, -- include dotfiles
+						actions = {
+							-- Custom yank action: copy relative path instead of absolute
+							-- Default explorer_yank copies absolute paths, so override to use
+							-- cwd-relative paths (e.g., /Users/foo/proj/src/main.lua -> src/main.lua)
+							yank_relative_path = function(picker)
+								local paths = {}
+								-- Get selected items, or item under cursor if none selected
+								for _, item in ipairs(picker:selected({ fallback = true })) do
+									-- ":." modifier converts to cwd-relative path
+									table.insert(paths, vim.fn.fnamemodify(item.file, ":."))
+								end
+								local text = table.concat(paths, "\n")
+								vim.fn.setreg("+", text) -- copy to system clipboard
+								Snacks.notify.info("Yanked:\n" .. text)
+							end,
+						},
+						win = {
+							list = {
+								keys = {
+									["y"] = "yank_relative_path", -- override default yank
+								},
+							},
+						},
+					},
 				},
 			},
 			rename = {},
