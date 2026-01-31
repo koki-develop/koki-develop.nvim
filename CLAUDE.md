@@ -32,7 +32,7 @@ This is a Neovim configuration repository using lazy.nvim as the plugin manager.
 ### Core Config (lua/config/)
 - **options.lua** - Core Neovim settings (line numbers, indentation, search, display, splits, clipboard, file handling, performance)
 - **keymaps.lua** - Non-plugin keybindings (window navigation `C-hjkl`, search `<leader>h`, line movement `J/K`, save `<leader>w`/`<leader>W`, quit `<leader>q`)
-- **autocmds.lua** - Autocommands (checktime for file changes)
+- **autocmds.lua** - Autocommands (checktime for file changes, yank highlight)
 - **lazy.lua** - lazy.nvim bootstrap, plugin loading, and auto-sync on startup
 
 ### Plugins (lua/plugins/)
@@ -41,7 +41,7 @@ This is a Neovim configuration repository using lazy.nvim as the plugin manager.
   - bufferline.nvim (buffer tabs, `S-h`/`S-l` cycle, `<leader>x` close)
   - mini.statusline (statusline)
 - **editor.lua** - File navigation and tools
-  - snacks.nvim (explorer `<leader>e`, picker `<C-p>`/`<C-g>`, terminal `<C-\>`)
+  - snacks.nvim (explorer `<leader>e`, picker `<C-p>`/`<C-g>`, terminal `<C-\>`, lazygit `<leader>gg`/`<leader>gl`/`<leader>gf`)
   - mini.diff (git diff signs, `[h`/`]h`/`[H`/`]H` navigation)
 - **coding.lua** - Code editing support
   - blink.cmp (completion, `C-y` accept, `C-n`/`C-p` navigate)
@@ -49,6 +49,7 @@ This is a Neovim configuration repository using lazy.nvim as the plugin manager.
   - mini.pairs (auto brackets)
   - mini.trailspace (trailing whitespace, `<leader>tw` trim)
   - conform.nvim (formatter, `<leader>f`, format_on_save)
+  - todo-comments.nvim (TODO/FIXME highlighting, `]t`/`[t` navigation)
 - **lsp.lua** - Language Server Protocol
   - nvim-lspconfig + mason.nvim + mason-lspconfig.nvim
   - mason-tool-installer.nvim + SchemaStore.nvim

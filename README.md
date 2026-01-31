@@ -22,7 +22,7 @@ Plugins will be automatically installed on first launch.
 | [blink.cmp](https://github.com/saghen/blink.cmp) | Completion engine (LSP, snippets, buffer) |
 | [friendly-snippets](https://github.com/rafamadriz/friendly-snippets) | Snippet collection |
 | [copilot.vim](https://github.com/github/copilot.vim) | GitHub Copilot AI completion (ghost text) |
-| [snacks.nvim](https://github.com/folke/snacks.nvim) | File explorer, fuzzy finder, terminal |
+| [snacks.nvim](https://github.com/folke/snacks.nvim) | File explorer, fuzzy finder, terminal, lazygit |
 | [mini.diff](https://github.com/nvim-mini/mini.diff) | Git diff visualization |
 | [mini.statusline](https://github.com/nvim-mini/mini.statusline) | Minimal statusline |
 | [mini.pairs](https://github.com/nvim-mini/mini.pairs) | Auto pairs (brackets, quotes) |
@@ -34,6 +34,8 @@ Plugins will be automatically installed on first launch.
 | [mason-tool-installer.nvim](https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim) | Auto-install formatters |
 | [SchemaStore.nvim](https://github.com/b0o/SchemaStore.nvim) | JSON/YAML schema catalog |
 | [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) | Syntax highlighting via tree-sitter |
+| [todo-comments.nvim](https://github.com/folke/todo-comments.nvim) | TODO/FIXME highlighting and navigation |
+| [plenary.nvim](https://github.com/nvim-lua/plenary.nvim) | Lua functions library (dependency) |
 
 ## Keymaps
 
@@ -95,6 +97,14 @@ Leader key is `<Space>`.
 | `<C-g>` | Normal | Live grep |
 | `<C-\>` | Normal/Terminal | Toggle floating terminal |
 
+### Lazygit (snacks.nvim)
+
+| Key | Mode | Description |
+|-----|------|-------------|
+| `<leader>gg` | Normal | Open Lazygit |
+| `<leader>gl` | Normal | Lazygit log |
+| `<leader>gf` | Normal | Lazygit file log |
+
 ### Git Diff (mini.diff)
 
 | Key | Mode | Description |
@@ -103,6 +113,13 @@ Leader key is `<Space>`.
 | `]h` | Normal | Jump to next hunk |
 | `[H` | Normal | Jump to first hunk |
 | `]H` | Normal | Jump to last hunk |
+
+### TODO Comments (todo-comments.nvim)
+
+| Key | Mode | Description |
+|-----|------|-------------|
+| `]t` | Normal | Jump to next TODO |
+| `[t` | Normal | Jump to previous TODO |
 
 ### Completion (blink.cmp)
 
