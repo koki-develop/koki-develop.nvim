@@ -5,9 +5,10 @@
 
 return {
 	-- ==========================================================================
-	-- File Explorer, Fuzzy Finder & Terminal (snacks.nvim)
+	-- File Explorer, Fuzzy Finder, Terminal & Dashboard (snacks.nvim)
 	-- ==========================================================================
-	-- snacks.nvim: File explorer, fuzzy finder, terminal, lazygit
+	-- snacks.nvim: Dashboard, file explorer, fuzzy finder, terminal, lazygit
+	-- Dashboard: Shown at startup (f:files, g:grep, r:recent, n:new, l:lazy, q:quit)
 	-- Explorer: Toggle with <leader>e
 	-- Navigation: l/<CR> to open, h to close dir, <BS> to go up
 	-- Operations: a (add), d (delete), r (rename), y (yank relative path), p (paste)
@@ -18,6 +19,7 @@ return {
 		"folke/snacks.nvim",
 		-- renovate: datasource=github-tags depName=folke/snacks.nvim
 		commit = "a4e46becca45eb65c73a388634b1ce8aad629ae0", -- v2.30.0
+		lazy = false, -- Load at startup for dashboard
 		dependencies = {
 			{ "nvim-tree/nvim-web-devicons" },
 		},
@@ -80,6 +82,15 @@ return {
 			},
 		},
 		opts = {
+			dashboard = {
+				sections = {
+					{ section = "header" },
+					{ icon = " ", title = "Keymaps", section = "keys", indent = 2, padding = 1 },
+					{ icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = 1 },
+					{ icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },
+					{ section = "startup" },
+				},
+			},
 			explorer = { replace_netrw = true },
 			indent = { animate = { enabled = false } },
 			lazygit = {},
