@@ -20,6 +20,9 @@ return {
 			require("tokyonight").setup({
 				style = "night", -- "night", "storm", "day", or "moon"
 				terminal_colors = true,
+				on_highlights = function(hl, _)
+					hl.SnacksIndentScope = { fg = "#737ba0" }
+				end,
 			})
 			vim.cmd.colorscheme("tokyonight")
 		end,
