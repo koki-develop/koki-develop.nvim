@@ -25,6 +25,7 @@ Plugins will be automatically installed on first launch.
 | [snacks.nvim](https://github.com/folke/snacks.nvim) | File explorer, fuzzy finder, terminal, lazygit |
 | [mini.diff](https://github.com/nvim-mini/mini.diff) | Git diff visualization |
 | [mini.statusline](https://github.com/nvim-mini/mini.statusline) | Minimal statusline |
+| [mini.surround](https://github.com/nvim-mini/mini.surround) | Add/delete/replace surrounding pairs |
 | [mini.pairs](https://github.com/nvim-mini/mini.pairs) | Auto pairs (brackets, quotes) |
 | [mini.trailspace](https://github.com/nvim-mini/mini.trailspace) | Trailing whitespace highlight/trim |
 | [conform.nvim](https://github.com/stevearc/conform.nvim) | Code formatter (format on save) |
@@ -119,6 +120,17 @@ Leader key is `<Space>`.
 |-----|------|-------------|
 | `]t` | Normal | Jump to next TODO |
 | `[t` | Normal | Jump to previous TODO |
+
+### Surround (mini.surround)
+
+| Key | Mode | Description |
+|-----|------|-------------|
+| `sa{motion}{char}` | Normal | Add surrounding (e.g., `saiw)` wraps word with `()`) |
+| `sd{char}` | Normal | Delete surrounding (e.g., `sd"` deletes `"`) |
+| `sr{from}{to}` | Normal | Replace surrounding (e.g., `sr"'` replaces `"` with `'`) |
+| `sf{char}` | Normal | Find surrounding (right) |
+| `sF{char}` | Normal | Find surrounding (left) |
+| `sh{char}` | Normal | Highlight surrounding |
 
 ### Completion (blink.cmp)
 
