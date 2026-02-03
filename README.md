@@ -121,16 +121,13 @@ Leader key is `<Space>`.
 | `]t` | Normal | Jump to next TODO |
 | `[t` | Normal | Jump to previous TODO |
 
-### Surround (mini.surround)
+### Surround (mini.surround, vim-surround style)
 
 | Key | Mode | Description |
 |-----|------|-------------|
-| `sa{motion}{char}` | Normal | Add surrounding (e.g., `saiw)` wraps word with `()`) |
-| `sd{char}` | Normal | Delete surrounding (e.g., `sd"` deletes `"`) |
-| `sr{from}{to}` | Normal | Replace surrounding (e.g., `sr"'` replaces `"` with `'`) |
-| `sf{char}` | Normal | Find surrounding (right) |
-| `sF{char}` | Normal | Find surrounding (left) |
-| `sh{char}` | Normal | Highlight surrounding |
+| `ys{motion}{char}` | Normal | Add surrounding (e.g., `ysiw)` wraps word with `()`) |
+| `ds{char}` | Normal | Delete surrounding (e.g., `ds"` deletes `"`) |
+| `cs{from}{to}` | Normal | Change surrounding (e.g., `cs"'` replaces `"` with `'`) |
 
 ### Completion (blink.cmp)
 

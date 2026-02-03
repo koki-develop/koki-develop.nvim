@@ -53,17 +53,26 @@ return {
 	-- ==========================================================================
 	-- Surround
 	-- ==========================================================================
-	-- mini.surround: Add, delete, replace surrounding pairs.
-	-- sa: Add surrounding (e.g., saiw) to add around inner word)
-	-- sd: Delete surrounding (e.g., sd")
-	-- sr: Replace surrounding (e.g., sr"')
-	-- sf/sF: Find surrounding right/left
-	-- sh: Highlight surrounding
+	-- mini.surround: Add, delete, replace surrounding pairs (vim-surround style).
+	-- ys{motion}{char}: Add surrounding (e.g., ysiw) to add around inner word)
+	-- ds{char}: Delete surrounding (e.g., ds")
+	-- cs{from}{to}: Change surrounding (e.g., cs"')
 	{
 		"nvim-mini/mini.surround",
 		-- renovate: datasource=github-tags depName=nvim-mini/mini.surround
 		commit = "88c52297ed3e69ecf9f8652837888ecc727a28ee", -- v0.17.0
-		opts = {},
+		opts = {
+			-- vim-surround style mappings
+			mappings = {
+				add = "ys",
+				delete = "ds",
+				replace = "cs",
+				find = "",
+				find_left = "",
+				highlight = "",
+				update_n_lines = "",
+			},
+		},
 	},
 
 	-- ==========================================================================
