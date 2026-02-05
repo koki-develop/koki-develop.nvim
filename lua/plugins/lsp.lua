@@ -77,6 +77,7 @@ return {
 			ensure_installed = {
 				"lua_ls", -- Lua language server (for Neovim config and Lua projects)
 				"gopls", -- Go language server (official Google implementation)
+				"rust_analyzer", -- Rust language server (official implementation)
 				"ts_ls", -- TypeScript/JavaScript language server
 				"eslint", -- ESLint language server (JavaScript/TypeScript linting)
 				"yamlls", -- YAML language server (schema validation, completion)
