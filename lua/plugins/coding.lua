@@ -61,18 +61,23 @@ return {
 		"nvim-mini/mini.surround",
 		-- renovate: datasource=github-tags depName=nvim-mini/mini.surround
 		commit = "88c52297ed3e69ecf9f8652837888ecc727a28ee", -- v0.17.0
-		opts = {
-			-- vim-surround style mappings
-			mappings = {
-				add = "ys",
-				delete = "ds",
-				replace = "cs",
-				find = "",
-				find_left = "",
-				highlight = "",
-				update_n_lines = "",
-			},
-		},
+		config = function()
+			require("mini.surround").setup({
+				-- vim-surround style mappings
+				mappings = {
+					add = "ys",
+					delete = "ds",
+					replace = "cs",
+					find = "",
+					find_left = "",
+					highlight = "",
+					update_n_lines = "",
+				},
+			})
+			-- Remap visual mode surround from `ys` to `S` to avoid conflict with `y` (yank)
+			vim.keymap.del("x", "ys")
+			vim.keymap.set("x", "S", [[:<C-u>lua MiniSurround.add('visual')<CR>]], { desc = "Add surrounding" })
+		end,
 	},
 
 	-- ==========================================================================
