@@ -19,7 +19,7 @@ This is a Neovim configuration repository using lazy.nvim as the plugin manager.
 │   │   └── lazy.lua              # lazy.nvim bootstrap & plugin loading
 │   └── plugins/
 │       ├── ui.lua                # Colorscheme, bufferline, statusline, icons
-│       ├── editor.lua            # File explorer, fuzzy finder, terminal, git diff
+│       ├── editor.lua            # File explorer, fuzzy finder, terminal, git diff/blame
 │       ├── coding.lua            # Completion, AI, auto-pairs, formatting
 │       └── lsp.lua               # LSP servers, Mason, diagnostics
 ├── CLAUDE.md
@@ -42,6 +42,7 @@ This is a Neovim configuration repository using lazy.nvim as the plugin manager.
 - **editor.lua** - File navigation and tools
   - snacks.nvim (explorer `<leader>e`, picker `<C-p>`/`<C-g>`, terminal `<C-\>`, lazygit `<leader>gg`/`<leader>gl`/`<leader>gf`)
   - mini.diff (git diff signs, `[h`/`]h`/`[H`/`]H` navigation)
+  - blame.nvim (git blame, `<leader>gb` toggle)
 - **coding.lua** - Code editing support
   - blink.cmp (completion, `C-y` accept, `C-n`/`C-p` navigate)
   - copilot.vim (AI completion)

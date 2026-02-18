@@ -24,6 +24,7 @@ Plugins will be automatically installed on first launch.
 | [copilot.vim](https://github.com/github/copilot.vim) | GitHub Copilot AI completion (ghost text) |
 | [snacks.nvim](https://github.com/folke/snacks.nvim) | File explorer, fuzzy finder, terminal, lazygit |
 | [mini.diff](https://github.com/nvim-mini/mini.diff) | Git diff visualization |
+| [blame.nvim](https://github.com/FabijanZulj/blame.nvim) | Git blame annotations |
 | [mini.statusline](https://github.com/nvim-mini/mini.statusline) | Minimal statusline |
 | [mini.surround](https://github.com/nvim-mini/mini.surround) | Add/delete/replace surrounding pairs |
 | [mini.pairs](https://github.com/nvim-mini/mini.pairs) | Auto pairs (brackets, quotes) |
@@ -113,6 +114,12 @@ Leader key is `<Space>`.
 | `]h` | Normal | Jump to next hunk |
 | `[H` | Normal | Jump to first hunk |
 | `]H` | Normal | Jump to last hunk |
+
+### Git Blame (blame.nvim)
+
+| Key | Mode | Description |
+|-----|------|-------------|
+| `<leader>gb` | Normal | Toggle git blame |
 
 ### TODO Comments (todo-comments.nvim)
 
