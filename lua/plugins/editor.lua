@@ -169,4 +169,24 @@ return {
 			},
 		},
 	},
+
+	-- ==========================================================================
+	-- Git Blame
+	-- ==========================================================================
+	-- blame.nvim: Toggle git blame annotations per line
+	-- Blame toggle: <leader>gb (window view)
+	-- Inside blame window: i (commit info), <CR> (show commit), <TAB>/<BS> (history stack), q/<esc> (close)
+	{
+		"FabijanZulj/blame.nvim",
+		-- renovate: datasource=git-refs depName=FabijanZulj/blame.nvim
+		commit = "179da7aaacce7c52874af636255ede72dd6fe796",
+		keys = {
+			{
+				"<leader>gb",
+				"<cmd>BlameToggle<cr>",
+				desc = "Toggle git blame",
+			},
+		},
+		opts = {},
+	},
 }
