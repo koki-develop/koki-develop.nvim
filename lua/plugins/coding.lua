@@ -94,6 +94,20 @@ return {
 	},
 
 	-- ==========================================================================
+	-- Auto Tag
+	-- ==========================================================================
+	-- nvim-ts-autotag: Treesitter-based auto close and auto rename of HTML/JSX tags.
+	-- Automatically closes tags: <div> → <div></div>
+	-- Automatically renames paired tags when editing one side.
+	{
+		"windwp/nvim-ts-autotag",
+		-- renovate: datasource=git-refs depName=windwp/nvim-ts-autotag
+		commit = "8e1c0a389f20bf7f5b0dd0e00306c1247bda2595",
+		event = { "BufReadPre", "BufNewFile" },
+		opts = {},
+	},
+
+	-- ==========================================================================
 	-- Trailing Whitespace
 	-- ==========================================================================
 	-- mini.trailspace: Highlight and remove trailing whitespace
