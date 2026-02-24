@@ -152,8 +152,13 @@ return {
 			},
 		},
 		opts = function()
-			-- Use biome if config exists, otherwise prettier
-			local function biome_or_prettier()
+			local util = require("conform.util")
+
+			-- Use oxfmt if config exists, biome if config exists, otherwise prettier
+			local function js_formatter()
+				if vim.fs.find({ ".oxfmtrc.json", ".oxfmtrc.jsonc" }, { upward = true })[1] then
+					return { "oxfmt" }
+				end
 				if vim.fs.find({ "biome.json", "biome.jsonc" }, { upward = true })[1] then
 					return { "biome" }
 				end
@@ -164,11 +169,11 @@ return {
 				formatters_by_ft = {
 					lua = { "stylua" },
 					go = { "goimports", "gofmt" },
-					javascript = biome_or_prettier,
-					typescript = biome_or_prettier,
-					javascriptreact = biome_or_prettier,
-					typescriptreact = biome_or_prettier,
-					json = biome_or_prettier,
+					javascript = js_formatter,
+					typescript = js_formatter,
+					javascriptreact = js_formatter,
+					typescriptreact = js_formatter,
+					json = js_formatter,
 					yaml = { "prettier" },
 					sh = { "shfmt" },
 				},
@@ -178,6 +183,14 @@ return {
 				format_on_save = {
 					timeout_ms = 500,
 					lsp_format = "fallback",
+				},
+				formatters = {
+					oxfmt = {
+						command = util.from_node_modules("oxfmt"),
+						args = { "--stdin-filepath", "$FILENAME" },
+						stdin = true,
+						cwd = util.root_file({ ".oxfmtrc.json", ".oxfmtrc.jsonc" }),
+					},
 				},
 			}
 		end,
