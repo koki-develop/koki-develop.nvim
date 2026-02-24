@@ -4,14 +4,14 @@
   "customManagers": [
     {
       "customType": "regex",
-      "managerFilePatterns": ["/^init\\.lua$/"],
+      "managerFilePatterns": ["/^lua\\/plugins\\/.*\\.lua$/"],
       "matchStrings": [
         "-- renovate: datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)\\n.*?commit\\s*=\\s*\"(?<currentDigest>[a-f0-9]{40})\".*?--\\s*(?<currentValue>v?[0-9.]+)"
       ]
     },
     {
       "customType": "regex",
-      "managerFilePatterns": ["/^init\\.lua$/"],
+      "managerFilePatterns": ["/^lua\\/plugins\\/.*\\.lua$/"],
       "matchStrings": [
         "-- renovate: datasource=git-refs depName=(?<depName>\\S+)\\n\\s*commit\\s*=\\s*\"(?<currentDigest>[a-f0-9]{40})\""
       ],
