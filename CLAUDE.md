@@ -54,6 +54,7 @@ This is a Neovim configuration repository using lazy.nvim as the plugin manager.
 - **lsp.lua** - Language Server Protocol
   - nvim-lspconfig + mason.nvim + mason-lspconfig.nvim
   - mason-tool-installer.nvim + SchemaStore.nvim
+  - fidget.nvim (LSP progress indicator)
   - LSP keybindings (`gd`, `gD`, `gi`, `gr`, `K`, `<leader>rn`, `<leader>ca`, `[d`/`]d`, `<leader>d`)
 
 ## Key Conventions

@@ -30,6 +30,8 @@ return {
 		-- renovate: datasource=git-refs depName=b0o/SchemaStore.nvim
 		{ "b0o/SchemaStore.nvim", commit = "9afa445602e6191917b4d32f1355e77b4525f905" },
 		{ "saghen/blink.cmp" },
+		-- renovate: datasource=github-tags depName=j-hui/fidget.nvim
+		{ "j-hui/fidget.nvim", commit = "b61e8af9b8b68ee0ec7da5fb7a8c203aae854f2e", opts = {} }, -- v1.6.1
 	},
 	config = function()
 		-- -----------------------------------------------------------------------

@@ -35,6 +35,7 @@ Plugins will be automatically installed on first launch.
 | [mason-lspconfig.nvim](https://github.com/mason-org/mason-lspconfig.nvim) | Mason and LSP integration |
 | [mason-tool-installer.nvim](https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim) | Auto-install formatters |
 | [SchemaStore.nvim](https://github.com/b0o/SchemaStore.nvim) | JSON/YAML schema catalog |
+| [fidget.nvim](https://github.com/j-hui/fidget.nvim) | LSP progress indicator |
 | [todo-comments.nvim](https://github.com/folke/todo-comments.nvim) | TODO/FIXME highlighting and navigation |
 | [plenary.nvim](https://github.com/nvim-lua/plenary.nvim) | Lua functions library (dependency) |
 
