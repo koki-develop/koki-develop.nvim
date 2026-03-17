@@ -13,7 +13,7 @@ return {
 	{
 		"saghen/blink.cmp",
 		-- renovate: datasource=github-tags depName=saghen/blink.cmp
-		commit = "539053d87740e357a96fb304c9a4da2ef27b3576", -- v1.10.0
+		commit = "451168851e8e2466bc97ee3e026c3dcb9141ce07", -- v1.10.1
 		event = { "InsertEnter", "CmdlineEnter" },
 		dependencies = {
 			-- renovate: datasource=git-refs depName=rafamadriz/friendly-snippets
