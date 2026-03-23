@@ -18,7 +18,7 @@ return {
 	{
 		"folke/snacks.nvim",
 		-- renovate: datasource=github-tags depName=folke/snacks.nvim
-		commit = "a4e46becca45eb65c73a388634b1ce8aad629ae0", -- v2.30.0
+		commit = "e6fd58c82f2f3fcddd3fe81703d47d6d48fc7b9f", -- v2.31.0
 		lazy = false, -- Load at startup for dashboard
 		dependencies = {
 			{ "nvim-tree/nvim-web-devicons" },
