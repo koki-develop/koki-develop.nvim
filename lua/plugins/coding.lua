@@ -102,7 +102,7 @@ return {
 	{
 		"windwp/nvim-ts-autotag",
 		-- renovate: datasource=git-refs depName=windwp/nvim-ts-autotag
-		commit = "8e1c0a389f20bf7f5b0dd0e00306c1247bda2595",
+		commit = "88c1453db4ba7dd24131086fe51fdf74e587d275",
 		event = { "BufReadPre", "BufNewFile" },
 		opts = {},
 	},
