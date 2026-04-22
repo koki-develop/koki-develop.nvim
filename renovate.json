@@ -13,7 +13,7 @@
       "customType": "regex",
       "managerFilePatterns": ["/^lua\\/plugins\\/.*\\.lua$/"],
       "matchStrings": [
-        "-- renovate: datasource=git-refs depName=(?<depName>\\S+)\\n\\s*commit\\s*=\\s*\"(?<currentDigest>[a-f0-9]{40})\""
+        "-- renovate: datasource=git-refs depName=(?<depName>\\S+)\\n.*?commit\\s*=\\s*\"(?<currentDigest>[a-f0-9]{40})\""
       ],
       "datasourceTemplate": "git-refs",
       "packageNameTemplate": "https://github.com/{{{depName}}}",
