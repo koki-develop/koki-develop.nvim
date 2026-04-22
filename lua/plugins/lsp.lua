@@ -2,15 +2,17 @@
 -- LSP Support
 -- =============================================================================
 -- This configuration sets up Language Server Protocol (LSP) support using
--- three complementary plugins:
+-- several complementary plugins:
 --
 -- - mason.nvim: A portable package manager for Neovim that manages external
 --   editor tooling such as LSP servers, DAP servers, linters, and formatters.
 --   It provides a nice UI accessible via :Mason command.
 --
--- - mason-lspconfig.nvim: Bridges mason.nvim with nvim-lspconfig, enabling
---   automatic installation and setup of LSP servers. It ensures that servers
---   specified in `ensure_installed` are automatically downloaded and configured.
+-- - mason-tool-installer.nvim: Installs and auto-updates all mason packages
+--   (LSPs, formatters, etc.) listed in its `ensure_installed` option.
+--
+-- - mason-lspconfig.nvim: Bridges mason.nvim with nvim-lspconfig, auto-enabling
+--   installed LSP servers via vim.lsp.enable() (no manual setup calls needed).
 --
 -- - nvim-lspconfig: Provides default configurations for various LSP servers,
 --   making it easy to set up language servers with sensible defaults.
@@ -46,49 +48,53 @@ return {
 		-- -----------------------------------------------------------------------
 		-- Mason Setup
 		-- -----------------------------------------------------------------------
-		-- Initialize mason.nvim with default settings.
-		-- This must be called before mason-lspconfig setup.
-		require("mason").setup()
+		-- Pin the mason-registry to a specific tag so that package versions are
+		-- managed by Renovate (see renovate.json). This must be called before
+		-- mason-lspconfig setup.
+		require("mason").setup({
+			registries = {
+				-- renovate: datasource=github-tags depName=mason-org/mason-registry
+				"github:mason-org/mason-registry@2026-04-21-joint-sheet",
+			},
+		})
 
 		-- -----------------------------------------------------------------------
 		-- Mason Tool Installer Setup
 		-- -----------------------------------------------------------------------
-		-- Automatically install formatters and other tools.
+		-- Install and auto-update all mason packages (LSPs, formatters, etc.) on
+		-- startup. Package names use mason's naming convention (e.g.
+		-- `lua-language-server` rather than lspconfig's `lua_ls`).
 		require("mason-tool-installer").setup({
+			auto_update = true,
+			run_on_start = true,
 			ensure_installed = {
+				-- Formatters
 				"stylua", -- Lua formatter
 				"shfmt", -- Shell formatter
 				"goimports", -- Go imports organizer
 				"prettier", -- JS/TS/JSON/YAML formatter
 				"biome", -- JS/TS/JSON formatter (fast)
+				-- LSPs
+				"lua-language-server", -- Lua (for Neovim config and Lua projects)
+				"gopls", -- Go (official Google implementation)
+				"rust-analyzer", -- Rust (official implementation)
+				"typescript-language-server", -- TypeScript/JavaScript
+				"eslint-lsp", -- ESLint (JavaScript/TypeScript linting)
+				"yaml-language-server", -- YAML (schema validation, completion)
+				"json-lsp", -- JSON (schema validation, completion)
+				"bash-language-server", -- Bash (shellcheck integration)
+				"tailwindcss-language-server", -- Tailwind CSS (class name completion)
+				"gh-actions-language-server", -- GitHub Actions (expression completion)
+				"terraform-ls", -- Terraform (HCL syntax, completion, diagnostics)
 			},
 		})
 
 		-- -----------------------------------------------------------------------
 		-- Mason-LSPConfig Setup
 		-- -----------------------------------------------------------------------
-		-- Configure automatic installation and enabling of LSP servers.
-		--
-		-- - ensure_installed: List of LSP servers that will be automatically
-		--   installed when Neovim starts if they are not already present.
-		--
-		-- - automatic_enable: When set to true (Neovim 0.11+), installed servers
-		--   are automatically enabled via vim.lsp.enable(). This means you don't
-		--   need to manually call setup() for each server.
+		-- Enable installed LSP servers via vim.lsp.enable() on Neovim 0.11+.
+		-- Installation is managed by mason-tool-installer (see above).
 		require("mason-lspconfig").setup({
-			ensure_installed = {
-				"lua_ls", -- Lua language server (for Neovim config and Lua projects)
-				"gopls", -- Go language server (official Google implementation)
-				"rust_analyzer", -- Rust language server (official implementation)
-				"ts_ls", -- TypeScript/JavaScript language server
-				"eslint", -- ESLint language server (JavaScript/TypeScript linting)
-				"yamlls", -- YAML language server (schema validation, completion)
-				"jsonls", -- JSON language server (schema validation, completion)
-				"bashls", -- Bash language server (shellcheck integration)
-				"tailwindcss", -- Tailwind CSS language server (class name completion)
-				"gh_actions_ls", -- GitHub Actions language server (expression completion)
-				"terraformls", -- Terraform language server (HCL syntax, completion, diagnostics)
-			},
 			automatic_enable = true,
 		})
 
