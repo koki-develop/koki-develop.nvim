@@ -26,7 +26,7 @@ return {
 		-- renovate: datasource=github-tags depName=mason-org/mason.nvim
 		{ "mason-org/mason.nvim", commit = "44d1e90e1f66e077268191e3ee9d2ac97cc18e65" }, -- v2.2.1
 		-- renovate: datasource=github-tags depName=mason-org/mason-lspconfig.nvim
-		{ "mason-org/mason-lspconfig.nvim", commit = "f2fa60409630ec2d24acf84494fb55e1d28d593c" }, -- v2.1.0
+		{ "mason-org/mason-lspconfig.nvim", commit = "0c2823e0418f3d9230ff8b201c976e84de1cb401" }, -- v2.2.0
 		-- renovate: datasource=git-refs depName=WhoIsSethDaniel/mason-tool-installer.nvim
 		{ "WhoIsSethDaniel/mason-tool-installer.nvim", commit = "443f1ef8b5e6bf47045cb2217b6f748a223cf7dc" },
 		-- renovate: datasource=git-refs depName=b0o/SchemaStore.nvim
