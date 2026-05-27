@@ -30,7 +30,7 @@ return {
 		-- renovate: datasource=git-refs depName=WhoIsSethDaniel/mason-tool-installer.nvim
 		{ "WhoIsSethDaniel/mason-tool-installer.nvim", commit = "443f1ef8b5e6bf47045cb2217b6f748a223cf7dc" },
 		-- renovate: datasource=git-refs depName=b0o/SchemaStore.nvim
-		{ "b0o/SchemaStore.nvim", commit = "5330d61a3b2f7ecf8bf6f9ab4ce12878497f2cee" },
+		{ "b0o/SchemaStore.nvim", commit = "e25e63f3b24fd6b8c2fc713107ad5d5594028eac" },
 		{ "saghen/blink.cmp" },
 		-- renovate: datasource=github-tags depName=j-hui/fidget.nvim
 		{ "j-hui/fidget.nvim", commit = "b61e8af9b8b68ee0ec7da5fb7a8c203aae854f2e", opts = {} }, -- v1.6.1
