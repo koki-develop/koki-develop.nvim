@@ -20,7 +20,7 @@
 return {
 	"neovim/nvim-lspconfig",
 	-- renovate: datasource=github-tags depName=neovim/nvim-lspconfig
-	commit = "f6738ef65dabade340b473d4ff2a1ad3352c10e7", -- v2.9.0
+	commit = "229b79051b380377664edc4cbd534930154921a1", -- v2.10.0
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
 		-- renovate: datasource=github-tags depName=mason-org/mason.nvim
