@@ -24,7 +24,7 @@ return {
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
 		-- renovate: datasource=github-tags depName=mason-org/mason.nvim
-		{ "mason-org/mason.nvim", commit = "bb639d4bf385a4d89f478b83af4d770be05ab7eb" }, -- v2.3.0
+		{ "mason-org/mason.nvim", commit = "2a6940af80375532e5e9e7c1f2fc6319a1b7a69d" }, -- v2.3.1
 		-- renovate: datasource=github-tags depName=mason-org/mason-lspconfig.nvim
 		{ "mason-org/mason-lspconfig.nvim", commit = "0c2823e0418f3d9230ff8b201c976e84de1cb401" }, -- v2.2.0
 		-- renovate: datasource=git-refs depName=WhoIsSethDaniel/mason-tool-installer.nvim
