@@ -72,7 +72,7 @@ return {
 	{
 		"nvim-mini/mini.statusline",
 		-- renovate: datasource=git-refs depName=nvim-mini/mini.statusline
-		commit = "b5547f44560dae3ccd81f914256fa6f705837022",
+		commit = "6a136236ec93090c820c1d2a6139aa053b2199c9",
 		lazy = false,
 		opts = {
 			use_icons = true,
