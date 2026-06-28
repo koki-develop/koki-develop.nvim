@@ -88,7 +88,7 @@ return {
 	{
 		"nvim-mini/mini.pairs",
 		-- renovate: datasource=github-tags depName=nvim-mini/mini.pairs
-		commit = "d5a29b6254dad07757832db505ea5aeab9aad43a", -- v0.17.0
+		commit = "4a014143fcb4e9df26198ccb3ecff3b9e77a048c", -- v0.18.0
 		event = "InsertEnter",
 		opts = {},
 	},
