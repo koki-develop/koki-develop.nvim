@@ -33,7 +33,7 @@ return {
 		{ "b0o/SchemaStore.nvim", commit = "490afbd7fd3b316330550405ac74758a971104a4" },
 		{ "saghen/blink.cmp" },
 		-- renovate: datasource=github-tags depName=j-hui/fidget.nvim
-		{ "j-hui/fidget.nvim", commit = "b61e8af9b8b68ee0ec7da5fb7a8c203aae854f2e", opts = {} }, -- v1.6.1
+		{ "j-hui/fidget.nvim", commit = "e1a07a5e46fb65a45a0c76870140bd2d16a73ebf", opts = {} }, -- v2.0.0
 	},
 	config = function()
 		-- -----------------------------------------------------------------------
