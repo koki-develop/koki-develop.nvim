@@ -150,7 +150,7 @@ return {
 	{
 		"nvim-mini/mini.diff",
 		-- renovate: datasource=github-tags depName=nvim-mini/mini.diff
-		commit = "fbb93ea1728e7c9d0944df8bd022a68402bd2e7e", -- v0.17.0
+		commit = "0743d26bd858ebe32efcf5c86a91a422a000f273", -- v0.18.0
 		event = { "BufReadPre", "BufNewFile" },
 		opts = {
 			view = {
