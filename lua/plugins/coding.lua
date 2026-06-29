@@ -116,7 +116,7 @@ return {
 	{
 		"nvim-mini/mini.trailspace",
 		-- renovate: datasource=github-tags depName=nvim-mini/mini.trailspace
-		commit = "f8083ca969e1b2098480c10f3c3c4d2ce3586680", -- v0.17.0
+		commit = "22653218f1aedc9bf306c8b4e8ec2c8a575f6fae", -- v0.18.0
 		event = { "BufReadPre", "BufNewFile" },
 		keys = {
 			{
