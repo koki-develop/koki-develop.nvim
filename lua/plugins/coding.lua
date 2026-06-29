@@ -60,7 +60,7 @@ return {
 	{
 		"nvim-mini/mini.surround",
 		-- renovate: datasource=github-tags depName=nvim-mini/mini.surround
-		commit = "88c52297ed3e69ecf9f8652837888ecc727a28ee", -- v0.17.0
+		commit = "580e4cb98c5900d9fe743865fb5a5b2178b4ab18", -- v0.18.0
 		config = function()
 			require("mini.surround").setup({
 				-- vim-surround style mappings
