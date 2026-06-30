@@ -21,7 +21,6 @@ Plugins will be automatically installed on first launch.
 | [nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons) | File type icons |
 | [blink.cmp](https://github.com/saghen/blink.cmp) | Completion engine (LSP, snippets, buffer) |
 | [friendly-snippets](https://github.com/rafamadriz/friendly-snippets) | Snippet collection |
-| [copilot.vim](https://github.com/github/copilot.vim) | GitHub Copilot AI completion (ghost text) |
 | [snacks.nvim](https://github.com/folke/snacks.nvim) | File explorer, fuzzy finder, terminal, lazygit |
 | [mini.diff](https://github.com/nvim-mini/mini.diff) | Git diff visualization |
 | [blame.nvim](https://github.com/FabijanZulj/blame.nvim) | Git blame annotations |

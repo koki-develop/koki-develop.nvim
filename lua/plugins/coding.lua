@@ -40,17 +40,6 @@ return {
 	},
 
 	-- ==========================================================================
-	-- AI Completion
-	-- ==========================================================================
-	-- GitHub Copilot: AI-powered code completion and suggestions.
-	-- After installation, run :Copilot setup to authenticate with GitHub.
-	{
-		"github/copilot.vim",
-		-- renovate: datasource=github-tags depName=github/copilot.vim
-		commit = "a12fd5672110c8aa7e3c8419e28c96943ca179be", -- v1.59.0
-	},
-
-	-- ==========================================================================
 	-- Surround
 	-- ==========================================================================
 	-- mini.surround: Add, delete, replace surrounding pairs (vim-surround style).

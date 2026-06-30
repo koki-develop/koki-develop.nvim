@@ -45,7 +45,6 @@ This is a Neovim configuration repository using lazy.nvim as the plugin manager.
   - blame.nvim (git blame, `<leader>gb` toggle)
 - **coding.lua** - Code editing support
   - blink.cmp (completion, `C-y` accept, `C-n`/`C-p` navigate)
-  - copilot.vim (AI completion)
   - mini.surround (vim-surround style: `ys` add, `ds` delete, `cs` change)
   - mini.pairs (auto brackets)
   - mini.trailspace (trailing whitespace, `<leader>tw` trim)
