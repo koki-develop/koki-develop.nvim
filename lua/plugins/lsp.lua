@@ -74,6 +74,7 @@ return {
 				"goimports", -- Go imports organizer
 				"prettier", -- JS/TS/JSON/YAML formatter
 				"biome", -- JS/TS/JSON formatter (fast)
+				"taplo", -- TOML formatter
 				-- LSPs
 				"lua-language-server", -- Lua (for Neovim config and Lua projects)
 				"gopls", -- Go (official Google implementation)

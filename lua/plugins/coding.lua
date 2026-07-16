@@ -165,6 +165,7 @@ return {
 					json = js_formatter,
 					yaml = { "prettier" },
 					sh = { "shfmt" },
+					toml = { "taplo" },
 				},
 				default_format_opts = {
 					lsp_format = "fallback",
