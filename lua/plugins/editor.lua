@@ -100,6 +100,7 @@ return {
 					grep = { hidden = true }, -- include dotfiles
 					explorer = {
 						hidden = true, -- include dotfiles
+						ignored = true, -- include gitignored files
 						actions = {
 							-- Custom yank action: copy relative path instead of absolute
 							-- Default explorer_yank copies absolute paths, so override to use
